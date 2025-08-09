@@ -206,8 +206,11 @@ footer {
     max-width: 500px;
 }
 
+/* Estilo para a imagem principal */
 .main-image img {
     width: 100%;
+    height: 400px; /* Adiciona uma altura fixa para evitar o 'salto' */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -330,6 +333,30 @@ footer {
     margin-bottom: 10px;
 }
 
+.product-description p {
+    text-align: justify;
+}
+
+/* Estilos para o ícone do carrinho no cabeçalho */
+.cart-icon {
+    position: relative;
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: #f00; /* Vermelho vibrante para destaque */
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .product-container {
@@ -339,4 +366,144 @@ footer {
     .product-images, .product-details {
         max-width: 100%;
     }
+}
+
+/* Estilo para o link de voltar */
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #bb65bb; /* Cor lavanda do cabeçalho */
+}
+
+/* Garante que o link de voltar apareça no topo da coluna em telas maiores */
+.product-container .back-link {
+    grid-column: 1 / -1; /* Ocupa toda a largura no layout de grid (ou flex) */
+}
+
+/* Ajusta o alinhamento em telas menores */
+@media (max-width: 768px) {
+    .product-container {
+        /* ... outros estilos ... */
+        align-items: flex-start;
+    }
+    .back-link {
+        margin-top: 20px;
+    }
+}
+
+/* --- Estilos para a página do carrinho --- */
+.cart-page {
+    padding: 60px 0;
+    min-height: 50vh; /* Garante que a página tenha uma altura mínima */
+}
+
+#cart-items {
+    margin-bottom: 30px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    gap: 20px; /* Adiciona espaço entre a imagem e os detalhes */
+}
+
+.cart-item-image {
+    width: 80px; /* Largura do contêiner da imagem */
+    height: 80px; /* Altura do contêiner da imagem */
+    border-radius: 5px;
+    overflow: hidden; /* Garante que a imagem não saia do contêiner */
+}
+
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+}
+
+.cart-item-details {
+    flex-grow: 1; /* Permite que os detalhes ocupem o espaço restante */
+}
+
+.cart-item-details h3 {
+    font-size: 1.2rem;
+    color: #702170; /* Lavanda escura */
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    font-weight: bold;
+    color: #333;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-item-actions .quantity-button {
+    padding: 5px 10px;
+}
+
+.cart-item-actions .remove-item {
+    background: none;
+    border: none;
+    color: #f00; /* Vermelho para o ícone de lixeira */
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.cart-item-actions .remove-item:hover {
+    color: #a00;
+}
+
+#cart-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px 0;
+    border-top: 2px solid #333;
+}
+
+#cart-subtotal {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#checkout-button {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Responsividade para a página do carrinho */
+@media (max-width: 500px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .cart-item-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* Remove o sublinhado dos links dos cards de produto */
+.card-link {
+    text-decoration: none;
 }
