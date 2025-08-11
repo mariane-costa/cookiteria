@@ -82,7 +82,7 @@ nav ul li a:hover {
     padding: 60px 0;
     /* A imagem de fundo agora é aplicada aqui */
     background: linear-gradient(rgba(245, 245, 220, 0.8), rgba(245, 245, 220, 0.8)),
-                url('/imagens/plano_de_fundo.png') no-repeat center center/cover fixed;
+                url('imagens/plano_de_fundo.png') no-repeat center center/cover fixed;
 }
 
 .produtos h2 {
