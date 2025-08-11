@@ -14,7 +14,11 @@
 
     <header>
         <div class="container header-container">
-            <h1>Cookiteria Afetiva</h1>
+            <div class="navbar-brand">
+                <a href="index.html">
+                    <h1>Cookiteria Afetiva</h1>
+                </a>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html#produtos">Produtos</a></li>
@@ -39,8 +43,11 @@
                 </div>
             
             <div id="cart-summary">
-                <p>Subtotal: <span id="cart-subtotal">R$ 0,00</span></p>
-                <button id="checkout-button" class="btn btn-buy">Finalizar Compra</button>
+                <p id="cart-subtotal">R$ 0,00</p>
+                <div class="button-group">
+                    <a href="index.html" class="btn btn-secondary" id="continue-shopping-button">Continuar Pedindo</a>
+                    <button id="checkout-button" class="btn btn-primary">Finalizar Compra</button>
+                </div>
             </div>
 
             <p id="empty-cart-message" style="display:none; text-align:center;">Seu carrinho está vazio.</p>
@@ -58,6 +65,6 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="script_produtos.js"></script>
+    <script src="cart_script.js"></script>
 </body>
 </html>

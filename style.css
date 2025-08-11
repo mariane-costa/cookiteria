@@ -507,3 +507,104 @@ footer {
 .card-link {
     text-decoration: none;
 }
+
+/* Estilos para a Notificação de Adicionado ao Carrinho */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.notification.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.notification i {
+    font-size: 1.2rem;
+}
+
+/* Estilos para o link no cabeçalho */
+.navbar-brand a {
+    /* Remove o sublinhado */
+    text-decoration: none;
+
+    /* Faz o link herdar a cor do texto do cabeçalho */
+    color: inherit;
+
+    /* Garante que o <h1> dentro do link também herde a cor */
+    display: block; 
+}
+
+/* Opcional: Adiciona um efeito ao passar o mouse */
+.navbar-brand a:hover {
+    color: #dddddd; /* Mude esta cor para a de sua preferência */
+}
+
+/* Ajustes para alinhar os botões lado a lado */
+#cart-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px 0;
+    border-top: 2px solid #333;
+}
+
+#cart-summary .button-group {
+    display: flex;
+    gap: 15px; /* Espaço entre os botões */
+    width: 100%;
+    max-width: 300px;
+}
+
+/* NOVO: Estilo para o botão de continuar comprando */
+#continue-shopping-button {
+    background-color: #dec5f5;
+    color: #333;
+    border: 1px solid #ccc;
+    flex-grow: 1; /* Faz com que ocupe o mesmo espaço do botão ao lado */
+    text-align: center; /* Centraliza o texto do link */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#continue-shopping-button:hover {
+    background-color: #ca9cdf;
+}
+
+/* Ajustamos o botão de finalizar compra para ocupar o mesmo espaço */
+#checkout-button {
+    flex-grow: 1; /* Faz com que ocupe o mesmo espaço do botão ao lado */
+    width: auto;
+}
+
+/* Estilo para o botão principal de ação (Finalizar Compra) */
+.btn-primary {
+    background-color: #a8d8eb; /* Cor azul da sua paleta */
+    color: rgb(0, 0, 0); /* Cor do texto */
+    text-decoration: none; /* Garante que não haja sublinhado */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #69aedc; /* Uma tonalidade mais escura do azul para o hover */
+}
