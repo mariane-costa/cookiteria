@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
     renderCart();
 
-    // Adiciona o event listener para os botões de ação do carrinho
+    // Adiciona o event listener para os botões de ação do carrinho.
     document.getElementById('cart-items').addEventListener('click', (event) => {
         const target = event.target;
         if (target.classList.contains('increment-quantity')) {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Event listener para o novo botão de esvaziar carrinho
+    // Event listener para o novo botão de esvaziar carrinho.
     document.getElementById('clear-cart-button').addEventListener('click', () => {
         clearCart();
     });

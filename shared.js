@@ -21,7 +21,7 @@ function updateCartCount() {
     }
 }
 
-// Função para detectar se é um dispositivo móvel
+// Função para detectar se é um dispositivo móvel.
 function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
 }

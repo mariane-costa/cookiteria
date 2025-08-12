@@ -620,7 +620,7 @@ footer {
     width: auto;
 }
 
-/* Estilo para o botão principal de ação (Finalizar Compra) */
+/* Estilo para o botão principal de ação (Finalizar Compra)*/
 .btn-primary {
     background-color: var(--cor-azul-claro);
     color: var(--cor-neutra-escura);
