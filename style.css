@@ -1,8 +1,23 @@
-/* Paleta de Cores: */
-/* Lavanda: #c8a2c8 */
-/* Azul: #87ceeb */
-/* Bege: #f5f5dc */
-/* Neutro escuro: #333333 */
+:root {
+  /* Paleta de Cores */
+  --cor-lavanda: #bb65bb;
+  --cor-lavanda-escuro: #702170;
+  --cor-lavanda-hover: #a780a7;
+  --cor-lavanda-secundaria: #dec5f5;
+  --cor-lavanda-secundaria-hover: #ca9cdf;
+  --cor-azul: #87ceeb;
+  --cor-azul-hover: #5b9bd5;
+  --cor-azul-claro: #a8d8eb;
+  --cor-azul-claro-hover: #69aedc;
+  --cor-bege: #f5f5dc;
+  --cor-neutra-escura: #333333;
+  --cor-branca: #ffffff;
+  --cor-cinza-clara: #eee;
+  --cor-cinza-media: #555;
+  --cor-cinza-borda: #ccc;
+  --cor-alerta-carrinho: #f00;
+  --cor-sucesso: #4CAF50;
+}
 
 * {
     margin: 0;
@@ -13,8 +28,8 @@
 body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    /*background-color: #f5f5dc;  Bege */
-    color: #333333;
+    background-color: var(--cor-bege);
+    color: var(--cor-neutra-escura);
 }
 
 .container {
@@ -25,8 +40,8 @@ body {
 
 /* --- Cabeçalho --- */
 header {
-    background-color: #bb65bb; /* Lavanda */
-    color: white;
+    background-color: var(--cor-lavanda);
+    color: var(--cor-branca);
     padding: 20px 0;
     position: sticky;
     top: 0;
@@ -53,20 +68,20 @@ nav ul {
 }
 
 nav ul li a {
-    color: white;
+    color: var(--cor-branca);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #87ceeb; /* Azul claro */
+    color: var(--cor-azul);
 }
 
 /* --- Seção de Resumo (Hero) --- */
 .hero {
-    background-color: #87ceeb; /* Azul */
-    color: #333333;
+    background-color: var(--cor-azul);
+    color: var(--cor-neutra-escura);
     padding: 80px 0;
     text-align: center;
 }
@@ -80,7 +95,6 @@ nav ul li a:hover {
 /* --- Cards de Produtos --- */
 .produtos {
     padding: 60px 0;
-    /* A imagem de fundo agora é aplicada aqui */
     background: linear-gradient(rgba(245, 245, 220, 0.8), rgba(245, 245, 220, 0.8)),
                 url('imagens/plano_de_fundo.png') no-repeat center center/cover fixed;
 }
@@ -99,7 +113,7 @@ nav ul li a:hover {
 }
 
 .card {
-    background-color: white;
+    background-color: var(--cor-branca);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-align: center;
@@ -122,13 +136,13 @@ nav ul li a:hover {
 
 .card h3 {
     font-size: 1.5rem;
-    color: #702170; /* Lavanda */
+    color: var(--cor-lavanda-escuro);
     margin-bottom: 10px;
 }
 
 .card .price {
     font-weight: bold;
-    color: #333333;
+    color: var(--cor-neutra-escura);
 }
 
 /* --- Seções Sobre e Contato --- */
@@ -138,7 +152,7 @@ nav ul li a:hover {
 }
 
 .sobre {
-    background-color: #f5f5dc; /* Bege */
+    background-color: var(--cor-bege);
 }
 
 .sobre p {
@@ -147,8 +161,8 @@ nav ul li a:hover {
 }
 
 .contato {
-    background-color: #87ceeb; /* Azul */
-    color: white;
+    background-color: var(--cor-azul);
+    color: var(--cor-branca);
 }
 
 .contato p {
@@ -158,8 +172,8 @@ nav ul li a:hover {
 
 /* --- Rodapé --- */
 footer {
-    background-color: #333333;
-    color: white;
+    background-color: var(--cor-neutra-escura);
+    color: var(--cor-branca);
     text-align: center;
     padding: 20px 0;
 }
@@ -169,8 +183,8 @@ footer {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #25D366;
-    color: white;
+    background-color: #25D366; /* Mantive essa cor como um ponto de destaque externo, já que não está na sua paleta */
+    color: var(--cor-branca);
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -190,7 +204,7 @@ footer {
 /* --- Estilos para a Página de Produto Cookie de gotas de chocolate--- */
 .product-page {
     padding: 60px 0;
-    background-color: #f5f5dc; /* Cor de fundo da seção de produtos */
+    background-color: var(--cor-bege);
 }
 
 .product-container {
@@ -209,8 +223,8 @@ footer {
 /* Estilo para a imagem principal */
 .main-image img {
     width: 100%;
-    height: 400px; /* Adiciona uma altura fixa para evitar o 'salto' */
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    height: 400px;
+    object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -233,7 +247,7 @@ footer {
 }
 
 .thumbnail-images img:hover, .thumbnail-images img.active {
-    border-color: #c8a2c8; /* Cor lavanda no hover */
+    border-color: var(--cor-lavanda);
 }
 
 .product-details {
@@ -243,25 +257,25 @@ footer {
 
 .product-name {
     font-size: 2.5rem;
-    color: #702170; /* Lavanda */
+    color: var(--cor-lavanda-escuro);
     margin-bottom: 10px;
 }
 
 .product-price {
     font-size: 2rem;
     font-weight: bold;
-    color: #333333;
+    color: var(--cor-neutra-escura);
     margin-bottom: 20px;
 }
 
 .payment-info {
     font-size: 1rem;
-    color: #555;
+    color: var(--cor-cinza-media);
     margin-bottom: 20px;
 }
 
 .payment-info .details-link {
-    color: #87ceeb; /* Azul */
+    color: var(--cor-azul);
     text-decoration: none;
     font-weight: bold;
     margin-left: 10px;
@@ -275,7 +289,7 @@ footer {
 }
 
 .quantity-button {
-    background-color: #eee;
+    background-color: var(--cor-cinza-clara);
     border: none;
     padding: 10px 15px;
     font-size: 1.2rem;
@@ -310,26 +324,26 @@ footer {
 }
 
 .btn-add-to-cart {
-    background-color: #87ceeb; /* Azul */
-    color: white;
+    background-color: var(--cor-azul);
+    color: var(--cor-branca);
 }
 
 .btn-add-to-cart:hover {
-    background-color: #5b9bd5;
+    background-color: var(--cor-azul-hover);
 }
 
 .btn-buy {
-    background-color: #c8a2c8; /* Lavanda */
-    color: white;
+    background-color: var(--cor-lavanda);
+    color: var(--cor-branca);
 }
 
 .btn-buy:hover {
-    background-color: #a780a7;
+    background-color: var(--cor-lavanda-hover);
 }
 
 .product-description h3 {
     font-size: 1.5rem;
-    color: #702170; /* Lavanda */
+    color: var(--cor-lavanda-escuro);
     margin-bottom: 10px;
 }
 
@@ -340,7 +354,7 @@ footer {
 /* Estilos para o ícone do carrinho no cabeçalho */
 .cart-icon {
     position: relative;
-    color: white;
+    color: var(--cor-branca);
     font-size: 1.2rem;
     text-decoration: none;
 }
@@ -349,8 +363,8 @@ footer {
     position: absolute;
     top: -8px;
     right: -12px;
-    background-color: #f00; /* Vermelho vibrante para destaque */
-    color: white;
+    background-color: var(--cor-alerta-carrinho);
+    color: var(--cor-branca);
     font-size: 0.7rem;
     font-weight: bold;
     padding: 2px 6px;
@@ -374,25 +388,24 @@ footer {
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: #333333;
+    color: var(--cor-neutra-escura);
     font-weight: bold;
     margin-bottom: 20px;
     transition: color 0.3s ease;
 }
 
 .back-link:hover {
-    color: #bb65bb; /* Cor lavanda do cabeçalho */
+    color: var(--cor-lavanda);
 }
 
 /* Garante que o link de voltar apareça no topo da coluna em telas maiores */
 .product-container .back-link {
-    grid-column: 1 / -1; /* Ocupa toda a largura no layout de grid (ou flex) */
+    grid-column: 1 / -1;
 }
 
 /* Ajusta o alinhamento em telas menores */
 @media (max-width: 768px) {
     .product-container {
-        /* ... outros estilos ... */
         align-items: flex-start;
     }
     .back-link {
@@ -403,7 +416,7 @@ footer {
 /* --- Estilos para a página do carrinho --- */
 .cart-page {
     padding: 60px 0;
-    min-height: 50vh; /* Garante que a página tenha uma altura mínima */
+    min-height: 50vh;
 }
 
 #cart-items {
@@ -416,35 +429,35 @@ footer {
     align-items: center;
     border-bottom: 1px solid #ddd;
     padding: 15px 0;
-    gap: 20px; /* Adiciona espaço entre a imagem e os detalhes */
+    gap: 20px;
 }
 
 .cart-item-image {
-    width: 80px; /* Largura do contêiner da imagem */
-    height: 80px; /* Altura do contêiner da imagem */
+    width: 80px;
+    height: 80px;
     border-radius: 5px;
-    overflow: hidden; /* Garante que a imagem não saia do contêiner */
+    overflow: hidden;
 }
 
 .cart-item-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    object-fit: cover;
 }
 
 .cart-item-details {
-    flex-grow: 1; /* Permite que os detalhes ocupem o espaço restante */
+    flex-grow: 1;
 }
 
 .cart-item-details h3 {
     font-size: 1.2rem;
-    color: #702170; /* Lavanda escura */
+    color: var(--cor-lavanda-escuro);
     margin-bottom: 5px;
 }
 
 .cart-item-price {
     font-weight: bold;
-    color: #333;
+    color: var(--cor-neutra-escura);
 }
 
 .cart-item-actions {
@@ -460,14 +473,14 @@ footer {
 .cart-item-actions .remove-item {
     background: none;
     border: none;
-    color: #f00; /* Vermelho para o ícone de lixeira */
+    color: var(--cor-alerta-carrinho);
     cursor: pointer;
     font-size: 1.2rem;
     transition: color 0.3s ease;
 }
 
 .cart-item-actions .remove-item:hover {
-    color: #a00;
+    color: #a00; /* Poderia ser uma variável de hover mais escura, como --cor-alerta-carrinho-hover */
 }
 
 #cart-summary {
@@ -475,7 +488,7 @@ footer {
     flex-direction: column;
     align-items: flex-end;
     padding: 20px 0;
-    border-top: 2px solid #333;
+    border-top: 2px solid var(--cor-neutra-escura);
 }
 
 #cart-subtotal {
@@ -513,8 +526,8 @@ footer {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #4CAF50; /* Verde */
-    color: white;
+    background-color: var(--cor-sucesso);
+    color: var(--cor-branca);
     padding: 15px 20px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -538,19 +551,14 @@ footer {
 
 /* Estilos para o link no cabeçalho */
 .navbar-brand a {
-    /* Remove o sublinhado */
     text-decoration: none;
-
-    /* Faz o link herdar a cor do texto do cabeçalho */
     color: inherit;
-
-    /* Garante que o <h1> dentro do link também herde a cor */
     display: block; 
 }
 
 /* Opcional: Adiciona um efeito ao passar o mouse */
 .navbar-brand a:hover {
-    color: #dddddd; /* Mude esta cor para a de sua preferência */
+    color: #dddddd;
 }
 
 /* Ajustes para alinhar os botões lado a lado */
@@ -559,23 +567,23 @@ footer {
     flex-direction: column;
     align-items: flex-end;
     padding: 20px 0;
-    border-top: 2px solid #333;
+    border-top: 2px solid var(--cor-neutra-escura);
 }
 
 #cart-summary .button-group {
     display: flex;
-    gap: 15px; /* Espaço entre os botões */
+    gap: 15px;
     width: 100%;
     max-width: 300px;
 }
 
 /* NOVO: Estilo para o botão de continuar comprando */
 #continue-shopping-button {
-    background-color: #dec5f5;
-    color: #333;
-    border: 1px solid #ccc;
-    flex-grow: 1; /* Faz com que ocupe o mesmo espaço do botão ao lado */
-    text-align: center; /* Centraliza o texto do link */
+    background-color: var(--cor-lavanda-secundaria);
+    color: var(--cor-neutra-escura);
+    border: 1px solid var(--cor-cinza-borda);
+    flex-grow: 1;
+    text-align: center;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -583,20 +591,20 @@ footer {
 }
 
 #continue-shopping-button:hover {
-    background-color: #ca9cdf;
+    background-color: var(--cor-lavanda-secundaria-hover);
 }
 
 /* Ajustamos o botão de finalizar compra para ocupar o mesmo espaço */
 #checkout-button {
-    flex-grow: 1; /* Faz com que ocupe o mesmo espaço do botão ao lado */
+    flex-grow: 1;
     width: auto;
 }
 
 /* Estilo para o botão principal de ação (Finalizar Compra) */
 .btn-primary {
-    background-color: #a8d8eb; /* Cor azul da sua paleta */
-    color: rgb(0, 0, 0); /* Cor do texto */
-    text-decoration: none; /* Garante que não haja sublinhado */
+    background-color: var(--cor-azul-claro);
+    color: var(--cor-neutra-escura);
+    text-decoration: none;
     padding: 10px 20px;
     border-radius: 5px;
     font-weight: bold;
@@ -606,5 +614,5 @@ footer {
 }
 
 .btn-primary:hover {
-    background-color: #69aedc; /* Uma tonalidade mais escura do azul para o hover */
+    background-color: var(--cor-azul-claro-hover);
 }
