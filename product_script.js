@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // A função loadCart() está em shared.js
+    // A função updateCartCount() está em shared.js
     updateCartCount();
 
     // -------------------------------------------------------------
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
     const productPage = document.querySelector('.product-page');
     if (productPage) {
+        // Encontra o ID do produto a partir da URL
         const urlPath = window.location.pathname;
         const productId = urlPath.substring(urlPath.lastIndexOf('/') + 1).replace('.html', '');
 
@@ -76,18 +77,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
-            // Adiciona a funcionalidade de adicionar ao carrinho
+            // Lógica para os botões de quantidade (o que faltava)
+            const minusButton = document.querySelector('.quantity-button.minus');
+            const plusButton = document.querySelector('.quantity-button.plus');
+            const quantitySpan = document.getElementById('quantity');
+
+            minusButton.addEventListener('click', () => {
+                let currentQuantity = parseInt(quantitySpan.textContent);
+                if (currentQuantity > 1) {
+                    quantitySpan.textContent = currentQuantity - 1;
+                }
+            });
+
+            plusButton.addEventListener('click', () => {
+                let currentQuantity = parseInt(quantitySpan.textContent);
+                quantitySpan.textContent = currentQuantity + 1;
+            });
+
+
+            // Adiciona a funcionalidade de adicionar ao carrinho e notificação
             const addToCartBtn = document.querySelector('.btn-add-to-cart');
-            const quantityInput = document.getElementById('quantity');
+            const buyNowBtn = document.querySelector('.btn-buy');
+            
             addToCartBtn.addEventListener('click', () => {
-                addToCart(product, parseInt(quantityInput.textContent));
-                showNotification();
+                const quantity = parseInt(quantitySpan.textContent);
+                addToCart(product, quantity);
+                showNotification(`Adicionado ao carrinho: ${quantity}x ${product.name}`);
+            });
+            
+            buyNowBtn.addEventListener('click', () => {
+                const quantity = parseInt(quantitySpan.textContent);
+                addToCart(product, quantity);
+                // Aqui você pode adicionar a lógica para redirecionar para a página de checkout, por exemplo
+                showNotification(`Comprando: ${quantity}x ${product.name}`);
+                setTimeout(() => {
+                    window.location.href = 'carrinho.html';
+                }, 1500); 
             });
         }
     }
 
     // -------------------------------------------------------------
-    // Funções de suporte (já existiam)
+    // Funções de suporte (já existiam, mas estão aqui para completar)
     // -------------------------------------------------------------
     function addToCart(product, quantity) {
         const cart = loadCart();
@@ -96,15 +127,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (existingItem) {
             existingItem.quantity += quantity;
         } else {
-            cart.push({ id: product.id, name: product.name, price: product.price, quantity: quantity, image: product.mainImage });
+            cart.push({ 
+                id: product.id, 
+                name: product.name, 
+                price: product.price, 
+                quantity: quantity, 
+                image: product.mainImage 
+            });
         }
 
         saveCart(cart);
         updateCartCount();
     }
 
-    function showNotification() {
-        const notification = document.getElementById('notification');
+    function showNotification(message) {
+        const notification = document.getElementById('cart-notification');
+        const notificationMessage = document.getElementById('notification-message');
+        notificationMessage.textContent = message;
+        
         notification.classList.add('show');
         setTimeout(() => {
             notification.classList.remove('show');
