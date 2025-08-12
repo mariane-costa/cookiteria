@@ -2,6 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Estas funções agora estão em shared.js
     updateCartCount();
     renderCart();
+
+    // Adiciona o event listener para os botões de ação do carrinho
+    document.getElementById('cart-items').addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.classList.contains('increment-quantity')) {
+            const itemId = target.closest('.cart-item').dataset.id;
+            changeQuantity(itemId, 1);
+        } else if (target.classList.contains('decrement-quantity')) {
+            const itemId = target.closest('.cart-item').dataset.id;
+            changeQuantity(itemId, -1);
+        } else if (target.closest('.remove-item')) {
+            const itemId = target.closest('.cart-item').dataset.id;
+            removeItem(itemId);
+        }
+    });
 });
 
 function renderCart() {
@@ -14,9 +29,10 @@ function renderCart() {
 
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
+        cartSubtotalElement.textContent = 'Subtotal: R$ 0,00';
     } else {
         cart.forEach(item => {
-            // Encontra o produto no array de dados global
+            // Encontra o produto no array de dados global (products)
             const product = products.find(p => p.id === item.id);
             if (!product) return; // Se não encontrar, pule para o próximo
 
@@ -27,8 +43,6 @@ function renderCart() {
             cartItem.classList.add('cart-item');
             cartItem.dataset.id = item.id;
 
-            // ... (o restante do código para criar os elementos do item do carrinho)
-            // Criei um template para você não precisar reescrever
             cartItem.innerHTML = `
                 <div class="cart-item-image">
                     <img src="${product.mainImage}" alt="${product.name}">
@@ -48,12 +62,45 @@ function renderCart() {
             `;
             cartItemsContainer.appendChild(cartItem);
         });
-    }
 
-    cartSubtotalElement.textContent = `Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+        cartSubtotalElement.textContent = `Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+    }
 }
 
-// ... (o restante do seu código para interagir com o carrinho)
-// Clicar em botões de + ou -
-// Clicar em remover item
-// ...
+function changeQuantity(id, change) {
+    const cart = loadCart();
+    const item = cart.find(i => i.id === id);
+
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            removeItem(id);
+        } else {
+            saveCart(cart);
+            updateCartCount();
+            renderCart();
+        }
+    }
+}
+
+function removeItem(id) {
+    let cart = loadCart();
+    cart = cart.filter(item => item.id !== id);
+    saveCart(cart);
+    updateCartCount();
+    renderCart();
+}
+
+function loadCart() {
+    return JSON.parse(localStorage.getItem('cart')) || [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function updateCartCount() {
+    const cart = loadCart();
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.querySelector('.cart-count').textContent = count;
+}
