@@ -61,4 +61,3 @@ const products = [
     }
 ];
     // Adicione os outros produtos aqui seguindo a mesma estrutura
-    // ...

@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
 
-            // Adiciona a funcionalidade de adicionar ao carrinho e notificação
+            // Adiciona a funcionalidade de adicionar ao carrinho e notificação.
             const addToCartBtn = document.querySelector('.btn-add-to-cart');
             const buyNowBtn = document.querySelector('.btn-buy');
             
