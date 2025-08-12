@@ -13,7 +13,8 @@
   --cor-neutra-escura: #333333;
   --cor-branca: #ffffff;
   --cor-cinza-clara: #eee;
-  --cor-cinza-media: #555;
+  --cor-cinza-media: #7e7e7e;
+  --cor-cinza-media-hover: #cfcfcf;
   --cor-cinza-borda: #ccc;
   --cor-alerta-carrinho: #f00;
   --cor-sucesso: #4CAF50;
@@ -577,7 +578,7 @@ footer {
     max-width: 300px;
 }
 
-/* NOVO: Estilo para o botão de continuar comprando */
+/*Estilo para o botão de continuar comprando */
 #continue-shopping-button {
     background-color: var(--cor-lavanda-secundaria);
     color: var(--cor-neutra-escura);
@@ -593,6 +594,25 @@ footer {
 #continue-shopping-button:hover {
     background-color: var(--cor-lavanda-secundaria-hover);
 }
+
+/*Estilo para o botão de esvaziar carrinho */
+#clear-cart-button {
+    background-color: var(--cor-cinza-media-hover);
+    color: var(--cor-neutra-escura);
+    border: 1px solid var(--cor-cinza-borda);
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#clear-cart-button:hover {
+    background-color: var(--cor-cinza-media);
+}
+
+
 
 /* Ajustamos o botão de finalizar compra para ocupar o mesmo espaço */
 #checkout-button {

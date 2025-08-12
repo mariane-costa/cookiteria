@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
             removeItem(itemId);
         }
     });
+
+    // Event listener para o novo botão de esvaziar carrinho
+    document.getElementById('clear-cart-button').addEventListener('click', () => {
+        clearCart();
+    });
 });
 
 function renderCart() {
@@ -32,9 +37,8 @@ function renderCart() {
         cartSubtotalElement.textContent = 'Subtotal: R$ 0,00';
     } else {
         cart.forEach(item => {
-            // Encontra o produto no array de dados global (products)
             const product = products.find(p => p.id === item.id);
-            if (!product) return; // Se não encontrar, pule para o próximo
+            if (!product) return;
 
             const itemPrice = parseFloat(product.price.replace('R$', '').replace(',', '.'));
             subtotal += itemPrice * item.quantity;
@@ -87,6 +91,13 @@ function removeItem(id) {
     let cart = loadCart();
     cart = cart.filter(item => item.id !== id);
     saveCart(cart);
+    updateCartCount();
+    renderCart();
+}
+
+// NOVO: Função para esvaziar o carrinho
+function clearCart() {
+    localStorage.removeItem('cart');
     updateCartCount();
     renderCart();
 }
