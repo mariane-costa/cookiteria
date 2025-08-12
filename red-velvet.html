@@ -37,49 +37,39 @@
 
     <main class="product-page">
         <div class="container product-container">
-            <div class="product-images">
-                <div class="main-image">
-                    <img src="imagens/red_velvet.jpg" alt="Cookie de Gotas de Red Velvet">
-                </div>
-                <div class="thumbnail-images">
-                    <img src="imagens/red_velvet.jpg" alt="Cookie de Gotas de Red Velvet, quebrado">
-                    <img src="imagens/red_velvet_mini01.jpg" alt="Cookie de Gotas de Red Velvet, cortado ao meio">
-                    <img src="imagens/red_velvet_mini02.jpg" alt="Cookies de Gotas de Red Velvet, empilhados">
-                </div>
-            </div>
-
-            <div class="product-details">
-                <h2 class="product-name">Cookie de Red Velvet</h2>
-                <p class="product-price">R$ 14,00</p>
-                <div class="payment-info">
-                    <p>Até 6x sem juros em pedidos a partir de 200 unidades</p>
-                    <a href="#" class="details-link">Ver mais detalhes</a>
-                </div>
-
-                <div class="quantity-selector">
-                    <button class="quantity-button minus">-</button>
-                    <span class="quantity">1</span>
-                    <button class="quantity-button plus">+</button>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn btn-add-to-cart">Adicionar ao Carrinho</button>
-                    <button class="btn btn-buy">Comprar</button>
-                </div>
-
-                <div class="product-description">
-                    <h3>Descrição do Produto</h3>
-                        <p>Um sabor sofisticado e irresistível: massa vermelha aveludada combinada com generosas gotas de chocolate branco. Macio por dentro e levemente crocante por fora, nosso cookie Red Velvet é perfeito para quem busca uma experiência única.</p>
-                        <br>
-                        <p>Ingredientes: farinha de trigo, açúcar mascavo, açúcar refinado, ovos, manteiga, chocolate branco em gotas, cacau em pó, corante alimentício vermelho, fermento em pó, bicarbonato de sódio e uma pitada de sal. Contém 130g.</p>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="container product-container">
             <a href="index.html#produtos" class="back-link">
                 <i class="fas fa-chevron-left"></i> Voltar para os produtos
             </a>
+            <div class="product-container">
+                <div class="product-images">
+                    <div class="main-image">
+                        <img src="" alt="" id="main-image">
+                    </div>
+                    <div class="thumbnail-images">
+                        </div>
+                </div>
+                <div class="product-details">
+                    <h2 class="product-name"></h2>
+                    <p class="product-price"></p>
+                    <div class="payment-info">
+                        <p>Até 6x sem juros em pedidos a partir de 200 unidades</p>
+                        <a href="#" class="details-link">Ver mais detalhes</a>
+                    </div>
+                    <div class="quantity-selector">
+                        <button class="quantity-button minus">-</button>
+                        <span id="quantity">1</span>
+                        <button class="quantity-button plus">+</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-add-to-cart">Adicionar ao Carrinho</button>
+                        <button class="btn btn-buy">Comprar</button>
+                    </div>
+                    <div class="product-description">
+                        <h3>Descrição do Produto</h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -94,6 +84,7 @@
     </a>
 
     <script src="shared.js"></script>
+    <script src="data.js"></script>
     <script src="product_script.js"></script>
 
     <div class="notification" id="cart-notification">

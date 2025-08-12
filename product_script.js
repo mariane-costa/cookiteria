@@ -1,109 +1,113 @@
-// --- Funções e Eventos para as páginas de produtos ---
-
-// Função para mostrar a notificação estilizada
-function showNotification(message) {
-    const notification = document.getElementById('cart-notification');
-    const notificationMessage = document.getElementById('notification-message');
-    
-    if (notification && notificationMessage) {
-        notificationMessage.textContent = message;
-        notification.classList.add('show');
-        
-        setTimeout(() => {
-            notification.classList.remove('show');
-        }, 3000); 
-    }
-}
-
-// Evento de carregamento para as páginas de produtos
 document.addEventListener('DOMContentLoaded', () => {
+    // A função loadCart() está em shared.js
+    updateCartCount();
 
-    const mainImage = document.querySelector('.main-image img');
-    const thumbnails = document.querySelectorAll('.thumbnail-images img');
-    if (thumbnails.length > 0) {
-        thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', () => {
-                thumbnails.forEach(thumb => thumb.classList.remove('active'));
-                thumbnail.classList.add('active');
-                mainImage.src = thumbnail.src;
-                mainImage.alt = thumbnail.alt;
+    // -------------------------------------------------------------
+    // Lógica para a PÁGINA INICIAL (index.html)
+    // -------------------------------------------------------------
+    const cardsContainer = document.getElementById('cards-container');
+
+    if (cardsContainer) {
+        products.forEach(product => {
+            const cardLink = document.createElement('a');
+            cardLink.href = `${product.id}.html`;
+            cardLink.classList.add('card-link');
+
+            const card = document.createElement('div');
+            card.classList.add('card');
+
+            const img = document.createElement('img');
+            img.src = product.mainImage;
+            img.alt = product.name;
+            
+            const h3 = document.createElement('h3');
+            h3.textContent = product.name;
+
+            const price = document.createElement('p');
+            price.classList.add('price');
+            price.textContent = product.price;
+
+            card.appendChild(img);
+            card.appendChild(h3);
+            card.appendChild(price);
+            cardLink.appendChild(card);
+            cardsContainer.appendChild(cardLink);
+        });
+    }
+
+    // -------------------------------------------------------------
+    // Lógica para as PÁGINAS DE PRODUTO (ex: red-velvet.html)
+    // -------------------------------------------------------------
+    const productPage = document.querySelector('.product-page');
+    if (productPage) {
+        const urlPath = window.location.pathname;
+        const productId = urlPath.substring(urlPath.lastIndexOf('/') + 1).replace('.html', '');
+
+        const product = products.find(p => p.id === productId);
+
+        if (product) {
+            // Atualiza os detalhes principais do produto
+            document.querySelector('.product-name').textContent = product.name;
+            document.querySelector('.product-price').textContent = product.price;
+            document.querySelector('.product-description p').textContent = product.description;
+            
+            // Atualiza a imagem principal
+            const mainImage = document.getElementById('main-image');
+            mainImage.src = product.mainImage;
+            mainImage.alt = product.name;
+            
+            // Atualiza as miniaturas
+            const thumbnailContainer = document.querySelector('.thumbnail-images');
+            thumbnailContainer.innerHTML = ''; // Limpa as miniaturas existentes
+            product.thumbnailImages.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Miniatura do ${product.name}`;
+                thumbnailContainer.appendChild(img);
             });
-        });
-    }
+            
+            // Adiciona a funcionalidade de troca de imagens
+            const thumbnails = thumbnailContainer.querySelectorAll('img');
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    mainImage.src = thumb.src;
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                });
+            });
 
-    const minusButton = document.querySelector('.quantity-button.minus');
-    const plusButton = document.querySelector('.quantity-button.plus');
-    const quantitySpan = document.querySelector('.quantity');
-    if (minusButton && plusButton && quantitySpan) {
-        let quantity = 1;
-        minusButton.addEventListener('click', () => {
-            if (quantity > 1) {
-                quantity--;
-                quantitySpan.textContent = quantity;
-            }
-        });
-        plusButton.addEventListener('click', () => {
-            quantity++;
-            quantitySpan.textContent = quantity;
-        });
-    }
-
-    const addToCartButton = document.querySelector('.btn-add-to-cart');
-    const buyButton = document.querySelector('.btn-buy');
-
-    // MANTIDO: Lógica para o WhatsApp, mas usada apenas no carrinho agora
-    const phoneNumber = '5591984579361';
-    let whatsappBaseURL = '';
-    if (isMobileDevice()) {
-        whatsappBaseURL = `https://wa.me/${phoneNumber}`;
-    } else {
-        whatsappBaseURL = `https://web.whatsapp.com/send?phone=${phoneNumber}`;
-    }
-    
-    // NOVO: Função para adicionar o produto ao carrinho, usada pelos dois botões
-    function addProductToCart() {
-        const productName = document.querySelector('.product-name').textContent;
-        const productPrice = parseFloat(document.querySelector('.product-price').textContent.replace('R$ ', '').replace(',', '.'));
-        const quantityToAdd = parseInt(document.querySelector('.quantity').textContent);
-        const productImage = document.querySelector('.main-image img').src;
-        let cart = loadCart();
-        let found = false;
-        for (let i = 0; i < cart.length; i++) {
-            if (cart[i].name === productName) {
-                cart[i].quantity += quantityToAdd;
-                found = true;
-                break;
-            }
+            // Adiciona a funcionalidade de adicionar ao carrinho
+            const addToCartBtn = document.querySelector('.btn-add-to-cart');
+            const quantityInput = document.getElementById('quantity');
+            addToCartBtn.addEventListener('click', () => {
+                addToCart(product, parseInt(quantityInput.textContent));
+                showNotification();
+            });
         }
-        if (!found) {
-            const newProduct = { 
-                name: productName, 
-                price: productPrice, 
-                quantity: quantityToAdd,
-                image: productImage 
-            };
-            cart.push(newProduct);
+    }
+
+    // -------------------------------------------------------------
+    // Funções de suporte (já existiam)
+    // -------------------------------------------------------------
+    function addToCart(product, quantity) {
+        const cart = loadCart();
+        const existingItem = cart.find(item => item.id === product.id);
+
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({ id: product.id, name: product.name, price: product.price, quantity: quantity, image: product.mainImage });
         }
+
         saveCart(cart);
         updateCartCount();
-        return { quantity: quantityToAdd, name: productName };
     }
 
-    // ALTERADO: O botão "Adicionar ao Carrinho" agora usa a nova função
-    if (addToCartButton) {
-        addToCartButton.addEventListener('click', () => {
-            const addedProduct = addProductToCart();
-            showNotification(`${addedProduct.quantity}x ${addedProduct.name} adicionado ao carrinho!`);
-        });
+    function showNotification() {
+        const notification = document.getElementById('notification');
+        notification.classList.add('show');
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
     }
-    
-    // ALTERADO: O botão "Comprar" agora adiciona o item e redireciona para o carrinho
-    if (buyButton) {
-        buyButton.addEventListener('click', () => {
-            addProductToCart(); // Adiciona o produto ao carrinho
-            window.location.href = 'carrinho.html'; // Redireciona para a página do carrinho
-        });
-    }
-
-    updateCartCount();
 });

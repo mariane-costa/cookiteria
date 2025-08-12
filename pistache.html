@@ -37,49 +37,39 @@
 
     <main class="product-page">
         <div class="container product-container">
-            <div class="product-images">
-                <div class="main-image">
-                    <img src="imagens/pistache.jpg" alt="Cookie de Pistache">
-                </div>
-                <div class="thumbnail-images">
-                    <img src="imagens/pistache_mini01.jpg" alt="Cookie de Pistache, cortado ao meio">
-                    <img src="imagens/pistache_mini02.jpg" alt="Cookies de Pistache, empilhados">
-                    <img src="imagens/pistache_mini03.jpg" alt="Cookie de Pistache, morido">
-                </div>
-            </div>
-
-            <div class="product-details">
-                <h2 class="product-name">Cookie de Pistache</h2>
-                <p class="product-price">R$ 20,00</p>
-                <div class="payment-info">
-                    <p>Até 6x sem juros em pedidos a partir de 200 unidades</p>
-                    <a href="#" class="details-link">Ver mais detalhes</a>
-                </div>
-
-                <div class="quantity-selector">
-                    <button class="quantity-button minus">-</button>
-                    <span class="quantity">1</span>
-                    <button class="quantity-button plus">+</button>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn btn-add-to-cart">Adicionar ao Carrinho</button>
-                    <button class="btn btn-buy">Comprar</button>
-                </div>
-
-            <div class="product-description">
-                <h3>Descrição do Produto</h3>
-                    <p>Uma experiência de sabor sofisticada e marcante. Nossa massa especial é combinada com pedaços de pistache, tornando cada mordida uma viagem ao paraíso dos sabores. É a escolha perfeita para quem busca um toque de nobreza e um sabor incrivelmente delicioso.</p>
-                    <br>
-                    <p>Ingredientes: farinha de trigo, açúcar mascavo, açúcar refinado, ovos, manteiga, pedaços de pistache, extrato de baunilha, fermento em pó, bicarbonato de sódio e uma pitada de sal. Contém 130g.</p>
-            </div>
-            </div>
-        </div>
-        <br>
-        <div class="container product-container">
             <a href="index.html#produtos" class="back-link">
                 <i class="fas fa-chevron-left"></i> Voltar para os produtos
             </a>
+            <div class="product-container">
+                <div class="product-images">
+                    <div class="main-image">
+                        <img src="" alt="" id="main-image">
+                    </div>
+                    <div class="thumbnail-images">
+                        </div>
+                </div>
+                <div class="product-details">
+                    <h2 class="product-name"></h2>
+                    <p class="product-price"></p>
+                    <div class="payment-info">
+                        <p>Até 6x sem juros em pedidos a partir de 200 unidades</p>
+                        <a href="#" class="details-link">Ver mais detalhes</a>
+                    </div>
+                    <div class="quantity-selector">
+                        <button class="quantity-button minus">-</button>
+                        <span id="quantity">1</span>
+                        <button class="quantity-button plus">+</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-add-to-cart">Adicionar ao Carrinho</button>
+                        <button class="btn btn-buy">Comprar</button>
+                    </div>
+                    <div class="product-description">
+                        <h3>Descrição do Produto</h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -94,6 +84,7 @@
     </a>
 
     <script src="shared.js"></script>
+    <script src="data.js"></script>    
     <script src="product_script.js"></script>
 
     <div class="notification" id="cart-notification">
