@@ -1,3 +1,4 @@
+const whatsappNumber = "5591984579361";
 const products = [
     {
         id: 'amendoas',
@@ -48,7 +49,7 @@ const products = [
         ]
     },
     {
-        id: 'chocolate_branco',
+        id: 'chocolate-branco',
         name: 'Cookie de Chocolate Branco',
         price: 'R$ 15,00',
         description: 'Uma explosão de sabor com chocolate branco, massa crocante por fora e macia por dentro.',
@@ -59,5 +60,8 @@ const products = [
             'imagens/chocolate_branco_mini03.jpg'
         ]
     }
-];
     // Adicione os outros produtos aqui seguindo a mesma estrutura
+];
+
+
+    

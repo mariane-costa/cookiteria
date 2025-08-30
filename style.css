@@ -1,23 +1,23 @@
 :root {
-  /* Paleta de Cores */
-  --cor-lavanda: #bb65bb;
-  --cor-lavanda-escuro: #702170;
-  --cor-lavanda-hover: #a780a7;
-  --cor-lavanda-secundaria: #dec5f5;
-  --cor-lavanda-secundaria-hover: #ca9cdf;
-  --cor-azul: #87ceeb;
-  --cor-azul-hover: #5b9bd5;
-  --cor-azul-claro: #a8d8eb;
-  --cor-azul-claro-hover: #69aedc;
-  --cor-bege: #f5f5dc;
-  --cor-neutra-escura: #333333;
-  --cor-branca: #ffffff;
-  --cor-cinza-clara: #eee;
-  --cor-cinza-media: #7e7e7e;
-  --cor-cinza-media-hover: #cfcfcf;
-  --cor-cinza-borda: #ccc;
-  --cor-alerta-carrinho: #f00;
-  --cor-sucesso: #4CAF50;
+    /* Paleta de Cores */
+    --cor-lavanda: #bb65bb;
+    --cor-lavanda-escuro: #702170;
+    --cor-lavanda-hover: #a780a7;
+    --cor-lavanda-secundaria: #dec5f5;
+    --cor-lavanda-secundaria-hover: #ca9cdf;
+    --cor-azul: #87ceeb;
+    --cor-azul-hover: #5b9bd5;
+    --cor-azul-claro: #a8d8eb;
+    --cor-azul-claro-hover: #69aedc;
+    --cor-bege: #f5f5dc;
+    --cor-neutra-escura: #333333;
+    --cor-branca: #ffffff;
+    --cor-cinza-clara: #eee;
+    --cor-cinza-media: #7e7e7e;
+    --cor-cinza-media-hover: #cfcfcf;
+    --cor-cinza-borda: #ccc;
+    --cor-alerta-carrinho: #f00;
+    --cor-sucesso: #4CAF50;
 }
 
 * {
@@ -62,6 +62,16 @@ header h1 {
     font-weight: 700;
 }
 
+.navbar-brand a {
+    text-decoration: none;
+    color: inherit;
+    display: block; 
+}
+
+.navbar-brand a:hover {
+    color: #dddddd;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -77,6 +87,25 @@ nav ul li a {
 
 nav ul li a:hover {
     color: var(--cor-azul);
+}
+
+.cart-icon {
+    position: relative;
+    color: var(--cor-branca);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: var(--cor-alerta-carrinho);
+    color: var(--cor-branca);
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
 }
 
 /* --- Seção de Resumo (Hero) --- */
@@ -106,7 +135,7 @@ nav ul li a:hover {
     margin-bottom: 40px;
 }
 
-.cards {
+#cards-container {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
@@ -121,6 +150,8 @@ nav ul li a:hover {
     padding-bottom: 20px;
     width: 300px;
     transition: transform 0.3s ease;
+    text-decoration: none;
+    color: var(--cor-neutra-escura); /* Adicionado para garantir que o texto dentro do link tenha a cor correta */
 }
 
 .card:hover {
@@ -143,7 +174,6 @@ nav ul li a:hover {
 
 .card .price {
     font-weight: bold;
-    color: var(--cor-neutra-escura);
 }
 
 /* --- Seções Sobre e Contato --- */
@@ -184,7 +214,7 @@ footer {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #25D366; /* Mantive essa cor como um ponto de destaque externo, já que não está na sua paleta */
+    background-color: #25D366; 
     color: var(--cor-branca);
     width: 60px;
     height: 60px;
@@ -202,7 +232,7 @@ footer {
     transform: scale(1.1);
 }
 
-/* --- Estilos para a Página de Produto Cookie de gotas de chocolate--- */
+/* --- Estilos para a Página de Produto--- */
 .product-page {
     padding: 60px 0;
     background-color: var(--cor-bege);
@@ -352,26 +382,6 @@ footer {
     text-align: justify;
 }
 
-/* Estilos para o ícone do carrinho no cabeçalho */
-.cart-icon {
-    position: relative;
-    color: var(--cor-branca);
-    font-size: 1.2rem;
-    text-decoration: none;
-}
-
-.cart-count {
-    position: absolute;
-    top: -8px;
-    right: -12px;
-    background-color: var(--cor-alerta-carrinho);
-    color: var(--cor-branca);
-    font-size: 0.7rem;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 50%;
-}
-
 /* Responsividade */
 @media (max-width: 768px) {
     .product-container {
@@ -401,7 +411,7 @@ footer {
 
 /* Garante que o link de voltar apareça no topo da coluna em telas maiores */
 .product-container .back-link {
-    grid-column: 1 / -1;
+    margin-right: auto;
 }
 
 /* Ajusta o alinhamento em telas menores */
@@ -481,7 +491,7 @@ footer {
 }
 
 .cart-item-actions .remove-item:hover {
-    color: #a00; /* Poderia ser uma variável de hover mais escura, como --cor-alerta-carrinho-hover */
+    color: #a00;
 }
 
 #cart-summary {
@@ -517,11 +527,6 @@ footer {
     }
 }
 
-/* Remove o sublinhado dos links dos cards de produto */
-.card-link {
-    text-decoration: none;
-}
-
 /* Estilos para a Notificação de Adicionado ao Carrinho */
 .notification {
     position: fixed;
@@ -550,27 +555,7 @@ footer {
     font-size: 1.2rem;
 }
 
-/* Estilos para o link no cabeçalho */
-.navbar-brand a {
-    text-decoration: none;
-    color: inherit;
-    display: block; 
-}
-
-/* Opcional: Adiciona um efeito ao passar o mouse */
-.navbar-brand a:hover {
-    color: #dddddd;
-}
-
 /* Ajustes para alinhar os botões lado a lado */
-#cart-summary {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 20px 0;
-    border-top: 2px solid var(--cor-neutra-escura);
-}
-
 #cart-summary .button-group {
     display: flex;
     gap: 15px;
@@ -611,8 +596,6 @@ footer {
 #clear-cart-button:hover {
     background-color: var(--cor-cinza-media);
 }
-
-
 
 /* Ajustamos o botão de finalizar compra para ocupar o mesmo espaço */
 #checkout-button {

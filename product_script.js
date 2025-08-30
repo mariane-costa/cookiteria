@@ -7,33 +7,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
     const cardsContainer = document.getElementById('cards-container');
 
-    if (cardsContainer) {
-        products.forEach(product => {
-            const cardLink = document.createElement('a');
-            cardLink.href = `${product.id}.html`;
-            cardLink.classList.add('card-link');
+if (cardsContainer) {
+    products.forEach(product => {
+        const card = document.createElement('a');
+        card.href = `${product.id}.html`;
+        card.classList.add('card');
 
-            const card = document.createElement('div');
-            card.classList.add('card');
+        const img = document.createElement('img');
+        img.src = product.mainImage;
+        img.alt = product.name;
+        
+        const h3 = document.createElement('h3');
+        h3.textContent = product.name;
 
-            const img = document.createElement('img');
-            img.src = product.mainImage;
-            img.alt = product.name;
-            
-            const h3 = document.createElement('h3');
-            h3.textContent = product.name;
+        const price = document.createElement('p');
+        price.classList.add('price');
+        price.textContent = product.price;
 
-            const price = document.createElement('p');
-            price.classList.add('price');
-            price.textContent = product.price;
-
-            card.appendChild(img);
-            card.appendChild(h3);
-            card.appendChild(price);
-            cardLink.appendChild(card);
-            cardsContainer.appendChild(cardLink);
-        });
-    }
+        card.appendChild(img);
+        card.appendChild(h3);
+        card.appendChild(price);
+        cardsContainer.appendChild(card);
+    });
+}
 
     // -------------------------------------------------------------
     // Lógica para as PÁGINAS DE PRODUTO (ex: red-velvet.html)
@@ -77,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
-            // Lógica para os botões de quantidade (o que faltava)
+            // Lógica para os botões de quantidade
             const minusButton = document.querySelector('.quantity-button.minus');
             const plusButton = document.querySelector('.quantity-button.plus');
             const quantitySpan = document.getElementById('quantity');
@@ -118,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // -------------------------------------------------------------
-    // Funções de suporte (já existiam, mas estão aqui para completar)
+    //                 Funções de suporte 
     // -------------------------------------------------------------
     function addToCart(product, quantity) {
         const cart = loadCart();

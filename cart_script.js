@@ -18,10 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Event listener para o novo botão de esvaziar carrinho.
+    // Event listener para o botão de esvaziar carrinho.
     document.getElementById('clear-cart-button').addEventListener('click', () => {
         clearCart();
     });
+
+    // NOVO: Event listener para o botão de finalizar pedido
+    const checkoutButton = document.getElementById('checkout-button');
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', sendWhatsAppOrder);
+    }
 });
 
 function renderCart() {
@@ -95,7 +101,7 @@ function removeItem(id) {
     renderCart();
 }
 
-// NOVO: Função para esvaziar o carrinho
+// Função para esvaziar o carrinho
 function clearCart() {
     localStorage.removeItem('cart');
     updateCartCount();
@@ -114,4 +120,40 @@ function updateCartCount() {
     const cart = loadCart();
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
     document.querySelector('.cart-count').textContent = count;
+}
+
+// NOVO: Função para enviar a mensagem do pedido pelo WhatsApp
+function sendWhatsAppOrder() {
+    const cart = loadCart();
+    if (cart.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+    }
+
+    // Informações para o pedido
+    let message = "Olá, gostaria de fazer um pedido!\n\n*Detalhes do pedido:*\n\n";
+    let total = 0;
+
+    cart.forEach(item => {
+        const product = products.find(p => p.id === item.id);
+        if (product) {
+            const price = parseFloat(product.price.replace('R$', '').replace(',', '.'));
+            const itemTotal = price * item.quantity;
+            total += itemTotal;
+            message += `${item.quantity}x ${product.name} - R$ ${itemTotal.toFixed(2).replace('.', ',')}\n`;
+        }
+    });
+
+    message += `\n*Total: R$ ${total.toFixed(2).replace('.', ',')}*\n\n`;
+    message += "Aguardando confirmação. Obrigado!";
+
+    // Codifica a mensagem para ser usada na URL
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = "5591984579361"; // Coloque seu número de telefone aqui (com código do país e DDD)
+
+    // Cria o link do WhatsApp
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    // Abre o link em uma nova aba
+    window.open(whatsappUrl, '_blank');
 }
