@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // A função principal que desenha todos os itens do carrinho na página HTML.
+// A função principal que desenha todos os itens do carrinho na página HTML.
 function renderCart() {
     const cart = loadCart(); // Carrega os dados do carrinho do localStorage.
     const cartItemsContainer = document.getElementById('cart-items');
@@ -51,18 +52,24 @@ function renderCart() {
 
     // Verifica se o carrinho está vazio.
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
+        cartItemsContainer.innerHTML = '<p id="empty-cart-message" style="text-align:center;">Seu carrinho está vazio.</p>';
         cartSubtotalElement.textContent = 'Subtotal: R$ 0,00';
+        // Esconde a seção de resumo se o carrinho estiver vazio
+        document.getElementById('cart-summary').style.display = 'none';
     } else {
+        // Mostra a seção de resumo se o carrinho tiver itens
+        document.getElementById('cart-summary').style.display = 'block';
+
         // Itera sobre cada item no carrinho.
         cart.forEach(item => {
             // Encontra os detalhes completos do produto no seu "banco de dados" (data.js) usando o ID.
             const product = products.find(p => p.id === item.id);
             if (!product) return; // Se o produto não for encontrado, ignora e passa para o próximo.
 
-            // Converte o preço do produto para um número e calcula o subtotal.
+            // Converte o preço do produto para um número e calcula o subtotal total do carrinho.
             const itemPrice = parseFloat(product.price.replace('R$', '').replace(',', '.'));
-            subtotal += itemPrice * item.quantity;
+            const itemSubtotal = itemPrice * item.quantity; // **Calcula o subtotal deste item**
+            subtotal += itemSubtotal;
 
             // Cria o elemento HTML para o item do carrinho.
             const cartItem = document.createElement('div');
@@ -76,8 +83,8 @@ function renderCart() {
                 </div>
                 <div class="cart-item-details">
                     <h3>${product.name}</h3>
-                    <p class="cart-item-price">${product.price}</p>
-                </div>
+                    <p class="cart-item-price">Preço unit.: ${product.price}</p>
+                    <p class="cart-item-subtotal">Subtotal: R$ ${itemSubtotal.toFixed(2).replace('.', ',')}</p> </div>
                 <div class="cart-item-actions">
                     <button class="quantity-button decrement-quantity">-</button>
                     <span class="quantity">${item.quantity}</span>

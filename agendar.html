@@ -13,6 +13,7 @@
     
     <script src="data.js" defer></script>
     <script src="shared.js" defer></script>
+    <script src="datas_indisponiveis.js" defer></script>
     <script src="agendar_script.js" defer></script>
 </head>
 <body>
@@ -56,14 +57,19 @@
                 <form id="scheduling-form">
                     <h3>Data de Entrega Selecionada:</h3>
                     <p id="selected-date-display">Nenhuma data selecionada.</p>
+                    
+                    <div class="form-group">
+                        <label for="client-name">Seu Nome:</label>
+                        <input type="text" id="client-name" name="client-name" required>
+                    </div>
 
                     <h3>Local de Entrega:</h3>
                     <select id="delivery-location" required>
                         <option value="">Selecione um local</option>
-                        <option value="Retirada em minha casa">Farei retirada: Bairro Guamá, Trav. 25 de junho, 219 A, entre Barão de igarapé Mirí e 3 de outubro</option>
-                        <option value="Shopping Castanheira">Entrega combinada: Shopping Castanheira (Entroncamento)</option>
-                        <option value="Shopping Pátio Belém">Entrega combinada: Shopping Pátio Belém (Batista Campos)</option>
-                        <option value="Shopping Boulevard">Entrega combinada: Shopping Boulevard (Doca)</option>
+                        <option value="Farei retirada do pedido no Guamá">Farei retirada: Bairro Guamá, Trav. 25 de junho, 219 A, entre Barão de igarapé Mirí e 3 de outubro</option>
+                        <option value="Entrega combinada: Shopping Castanheira">Entrega combinada: Shopping Castanheira (Entroncamento)</option>
+                        <option value="Entrega combinada: Shopping Pátio Belém">Entrega combinada: Shopping Pátio Belém (Batista Campos)</option>
+                        <option value="Entrega combinada: Shopping Boulevard">Entrega combinada: Shopping Boulevard (Doca)</option>
                     </select>
 
                     <button type="submit" class="btn-primary">Finalizar Agendamento</button>
@@ -75,6 +81,6 @@
     <footer class="footer">
         <p>&copy; 2025 Cookies Deliciosos. Todos os direitos reservados.</p>
     </footer>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 </body>
 </html>

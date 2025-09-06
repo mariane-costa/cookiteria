@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedDateDisplay = document.getElementById('selected-date-display');
     const schedulingForm = document.getElementById('scheduling-form');
     const deliveryLocationSelect = document.getElementById('delivery-location');
-
+    
     let today = new Date();
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para renderizar o calendário
     function renderCalendar() {
-        // Limpa apenas os dias, mantendo os cabeçalhos
         while (calendarGrid.children.length > 7) {
             calendarGrid.removeChild(calendarGrid.lastChild);
         }
@@ -35,21 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
         const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
         const firstAvailableDate = new Date(today);
-        firstAvailableDate.setDate(today.getDate() + 4); // Pedido + 3 dias de produção
+        firstAvailableDate.setDate(today.getDate() + 4);
 
         currentMonthYearElement.textContent = new Date(currentYear, currentMonth).toLocaleDateString('pt-BR', {
             month: 'long',
             year: 'numeric'
         });
 
-        // Adiciona células vazias para os dias antes do primeiro dia do mês
         for (let i = 0; i < firstDayOfMonth; i++) {
             const emptyCell = document.createElement('div');
             emptyCell.classList.add('calendar-cell', 'empty');
             calendarGrid.appendChild(emptyCell);
         }
 
-        // Adiciona as células dos dias do mês
         for (let i = 1; i <= daysInMonth; i++) {
             const date = new Date(currentYear, currentMonth, i);
             const dateString = date.toISOString().split('T')[0];
@@ -114,18 +111,24 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const clientName = document.getElementById('client-name').value;
+        if (clientName === "") {
+            alert('Por favor, digite seu nome.');
+            return;
+        }
+        
         if (deliveryLocationSelect.value === "") {
             alert('Por favor, selecione um local de entrega.');
             return;
         }
 
         selectedLocation = deliveryLocationSelect.value;
-        sendWhatsAppOrder(cart, selectedDate, selectedLocation);
+        sendWhatsAppOrder(cart, selectedDate, selectedLocation, clientName);
     });
 
     // Função para enviar o pedido via WhatsApp, agora com agendamento
-    function sendWhatsAppOrder(cart, date, location) {
-        let message = `Olá, gostaria de fazer um pedido!\n\n*Detalhes do pedido:*\n\n`;
+    function sendWhatsAppOrder(cart, date, location, clientName) {
+        let message = `Olá, gostaria de fazer um pedido!\n\n*Nome:* ${clientName}\n*Detalhes do pedido:*\n\n`;
         let total = 0;
 
         cart.forEach(item => {
@@ -141,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         message += `\n*Total: R$ ${total.toFixed(2).replace('.', ',')}*\n\n`;
         message += `*Data de Entrega:* ${date.toLocaleDateString('pt-BR')}\n`;
         message += `*Local de Entrega:* ${location}\n\n`;
-        message += `**Lembrete:** A produção será iniciada após o pagamento de 50% do valor total. Entrarei em contato para combinar os detalhes. Obrigado!`;
+        message += `**Lembrete:** A produção será iniciada após o pagamento de 50% do valor total. Obrigado!`;
 
         const encodedMessage = encodeURIComponent(message);
         // O número do WhatsApp agora está em data.js, tornando-o mais fácil de gerenciar
@@ -149,6 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.open(whatsappUrl, '_blank');
     }
-
+    
     renderCalendar();
 });

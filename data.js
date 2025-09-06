@@ -1,10 +1,3 @@
-// Este array armazena as datas que não estão disponíveis para agendamento.
-// Use o formato 'YYYY-MM-DD' para cada data.
-// Exemplo: '2025-09-20' representa 20 de setembro de 2025.
-const unavailableDates = [
-];
-
-
 // A constante 'whatsappNumber' armazena o número de telefone para o pedido.
 // Armazenar em uma variável facilita a atualização futura, evitando a necessidade de procurar o número em outros arquivos.
 const whatsappNumber = "5591984579361";

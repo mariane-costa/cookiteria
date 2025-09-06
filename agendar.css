@@ -181,3 +181,20 @@
 .page-title {
     text-align: center;
 }
+
+/* Estilizando o campo de texto e seleção */
+#scheduling-form input[type="text"],
+#scheduling-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Cantos arredondados */
+    box-sizing: border-box; /* Garante que padding e border não alterem a largura */
+    font-size: 16px;
+}
+
+/* Deixa o formulário com cantos arredondados */
+#scheduling-form {
+    border-radius: 12px;
+}

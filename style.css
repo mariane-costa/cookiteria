@@ -659,3 +659,128 @@ footer {
     border-color: var(--cor-lavanda-escuro); /* Cor da borda quando selecionado */
     outline: none;
 }
+
+/* Garante que todos os elementos respeitem a largura da tela */
+* {
+    box-sizing: border-box;
+}
+
+/* --- Estilos para telas menores (Dispositivos Móveis) --- */
+@media (max-width: 768px) {
+    /* Evita que a página role horizontalmente */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Estiliza o cabeçalho e a navegação */
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .navbar-brand {
+        margin-bottom: 10px;
+    }
+
+    nav {
+        width: 100%;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .cart-icon {
+        position: static; /* Remove o posicionamento absoluto */
+        margin-top: 10px;
+    }
+
+    /* Garante que o conteúdo principal ocupe a largura total */
+    main {
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* Estiliza o contêiner do carrinho e seus itens */
+    .cart-container {
+        flex-direction: column;
+        width: 100%;
+        padding: 15px;
+    }
+
+    #cart-items {
+        width: 100%;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .cart-item:last-child {
+        border-bottom: none;
+    }
+
+    .cart-item-details {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .cart-item img {
+        width: 120px;
+        height: 120px;
+        margin: 0 0 15px 0;
+    }
+    
+    .quantity-controls {
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    /* Seção de resumo e botões */
+    #cart-summary {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .button-group a,
+    .button-group button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    /* Ajusta o posicionamento do contador de itens em dispositivos móveis */
+    .cart-icon {
+        position: relative; /* Garante que o contador seja posicionado em relação ao ícone */
+        margin-top: 10px;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -8px; /* Move o contador para cima */
+        right: -8px; /* Move o contador para a direita */
+    }
+}
