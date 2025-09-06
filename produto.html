@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Carrinho - Cookiteria Afetiva</title>
+    <title>Detalhes do Produto - Cookiteria Afetiva</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,25 +35,41 @@
         </div>
     </header>
 
-    <main class="cart-page">
-        <div class="container">
-            <h2>Meu Carrinho</h2>
+    <main class="product-page">
+        <div class="container product-container">
+            <a href="index.html#produtos" class="back-link">
+                <i class="fas fa-chevron-left"></i> Voltar para os produtos
+            </a>
             
-            <div id="cart-items">
+            <div class="product-images">
+                <div class="main-image">
+                    <img src="" alt="" id="main-image">
                 </div>
-            
-            <div id="cart-summary">
-                <p id="cart-subtotal">Subtotal: R$ 0,00</p>
-                <div class="button-group">
-                    <a href="index.html" id="continue-shopping-button" class="btn">Continuar Comprando</a>
-                    <button id="clear-cart-button" class="btn btn-primary">Esvaziar Carrinho</button>
-                    <a href="agendar.html" id="checkout-button" class="btn btn-primary">Continuar para Agendamento</a>
-
+                <div class="thumbnail-images">
                 </div>
             </div>
-
-            <p id="empty-cart-message" style="display:none; text-align:center;">Seu carrinho está vazio.</p>
-
+            
+            <div class="product-details">
+                <h2 class="product-name"></h2>
+                <p class="product-price"></p>
+                <div class="payment-info">
+                    <p>Até 6x sem juros em pedidos a partir de 200 unidades</p>
+                    <a href="#" class="details-link">Ver mais detalhes</a>
+                </div>
+                <div class="quantity-selector">
+                    <button class="quantity-button minus">-</button>
+                    <span id="quantity">1</span>
+                    <button class="quantity-button plus">+</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-add-to-cart">Adicionar ao Carrinho</button>
+                    <button class="btn btn-buy">Comprar</button>
+                </div>
+                <div class="product-description">
+                    <h3>Descrição do Produto</h3>
+                    <p></p>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -67,10 +83,13 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="shared.js"></script>
+    <div class="notification" id="cart-notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-message"></span>
+    </div>
 
+    <script src="shared.js"></script>
     <script src="data.js"></script>
-    
-    <script src="cart_script.js"></script>
+    <script src="product_script.js"></script>
 </body>
 </html>

@@ -1,58 +1,75 @@
+// O evento 'DOMContentLoaded' garante que o script só vai rodar depois que todo o HTML da página estiver carregado.
 document.addEventListener('DOMContentLoaded', () => {
-    // Estas funções agora estão em shared.js
+    // Chamadas iniciais para carregar a página do carrinho.
+    // 'updateCartCount()' e 'renderCart()' usam as funções que estão no arquivo 'shared.js'.
     updateCartCount();
     renderCart();
 
-    // Adiciona o event listener para os botões de ação do carrinho.
+    // Adiciona um "ouvinte de eventos" para todos os cliques dentro da área dos itens do carrinho.
+    // Isso é chamado de "delegação de eventos" e é mais eficiente do que adicionar um ouvinte para cada botão.
     document.getElementById('cart-items').addEventListener('click', (event) => {
-        const target = event.target;
+        const target = event.target; // 'target' é o elemento exato que foi clicado.
+        
+        // Verifica qual botão foi clicado usando as classes CSS.
         if (target.classList.contains('increment-quantity')) {
+            // Se o botão de '+' foi clicado, pega o ID do produto do elemento pai.
             const itemId = target.closest('.cart-item').dataset.id;
-            changeQuantity(itemId, 1);
+            changeQuantity(itemId, 1); // Chama a função para aumentar a quantidade em 1.
         } else if (target.classList.contains('decrement-quantity')) {
+            // Se o botão de '-' foi clicado.
             const itemId = target.closest('.cart-item').dataset.id;
-            changeQuantity(itemId, -1);
+            changeQuantity(itemId, -1); // Chama a função para diminuir a quantidade em 1.
         } else if (target.closest('.remove-item')) {
+            // Se o botão de lixeira foi clicado.
             const itemId = target.closest('.cart-item').dataset.id;
-            removeItem(itemId);
+            removeItem(itemId); // Chama a função para remover o item do carrinho.
         }
     });
 
-    // Event listener para o botão de esvaziar carrinho.
+    // Adiciona um evento para o botão de "Esvaziar Carrinho".
     document.getElementById('clear-cart-button').addEventListener('click', () => {
-        clearCart();
+        clearCart(); // Chama a função que limpa o carrinho por completo.
     });
 
-    // NOVO: Event listener para o botão de finalizar pedido
-    const checkoutButton = document.getElementById('checkout-button');
-    if (checkoutButton) {
-        checkoutButton.addEventListener('click', sendWhatsAppOrder);
-    }
+    // Adiciona um evento para o botão de "Finalizar Compra".
+    // const checkoutButton = document.getElementById('checkout-button');
+    // if (checkoutButton) { // Garante que o botão existe antes de tentar adicionar o evento.
+    //     checkoutButton.addEventListener('click', sendWhatsAppOrder);
+    // }
+    
 });
 
+// A função principal que desenha todos os itens do carrinho na página HTML.
 function renderCart() {
-    const cart = loadCart();
+    const cart = loadCart(); // Carrega os dados do carrinho do localStorage.
     const cartItemsContainer = document.getElementById('cart-items');
     const cartSubtotalElement = document.getElementById('cart-subtotal');
     let subtotal = 0;
 
+    // Limpa o conteúdo da lista de itens para evitar duplicatas ao atualizar a tela.
     cartItemsContainer.innerHTML = '';
 
+    // Verifica se o carrinho está vazio.
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
         cartSubtotalElement.textContent = 'Subtotal: R$ 0,00';
     } else {
+        // Itera sobre cada item no carrinho.
         cart.forEach(item => {
+            // Encontra os detalhes completos do produto no seu "banco de dados" (data.js) usando o ID.
             const product = products.find(p => p.id === item.id);
-            if (!product) return;
+            if (!product) return; // Se o produto não for encontrado, ignora e passa para o próximo.
 
+            // Converte o preço do produto para um número e calcula o subtotal.
             const itemPrice = parseFloat(product.price.replace('R$', '').replace(',', '.'));
             subtotal += itemPrice * item.quantity;
 
+            // Cria o elemento HTML para o item do carrinho.
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item');
-            cartItem.dataset.id = item.id;
+            cartItem.dataset.id = item.id; // Armazena o ID do produto no HTML para fácil acesso.
 
+            // Insere a estrutura e os dados do item.
             cartItem.innerHTML = `
                 <div class="cart-item-image">
                     <img src="${product.mainImage}" alt="${product.name}">
@@ -70,22 +87,26 @@ function renderCart() {
                     </button>
                 </div>
             `;
-            cartItemsContainer.appendChild(cartItem);
+            cartItemsContainer.appendChild(cartItem); // Adiciona o item à lista.
         });
 
+        // Atualiza o subtotal total do carrinho na tela.
         cartSubtotalElement.textContent = `Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}`;
     }
 }
 
+// Aumenta ou diminui a quantidade de um item no carrinho.
+// Recebe o 'id' do produto e a 'change' (mudança), que pode ser +1 ou -1.
 function changeQuantity(id, change) {
     const cart = loadCart();
-    const item = cart.find(i => i.id === id);
+    const item = cart.find(i => i.id === id); // Encontra o item no carrinho.
 
     if (item) {
         item.quantity += change;
         if (item.quantity <= 0) {
-            removeItem(id);
+            removeItem(id); // Se a quantidade for 0 ou menos, remove o item.
         } else {
+            // Salva, atualiza o contador e renderiza a tela novamente para mostrar a mudança.
             saveCart(cart);
             updateCartCount();
             renderCart();
@@ -93,36 +114,24 @@ function changeQuantity(id, change) {
     }
 }
 
+// Remove um item do carrinho.
 function removeItem(id) {
     let cart = loadCart();
+    // Cria um novo array, filtrando e removendo o item com o ID correspondente.
     cart = cart.filter(item => item.id !== id);
-    saveCart(cart);
+    saveCart(cart); // Salva o novo array.
     updateCartCount();
     renderCart();
 }
 
-// Função para esvaziar o carrinho
+// Esvazia todo o carrinho.
 function clearCart() {
-    localStorage.removeItem('cart');
+    localStorage.removeItem('cart'); // Remove a informação do carrinho do navegador.
     updateCartCount();
     renderCart();
 }
 
-function loadCart() {
-    return JSON.parse(localStorage.getItem('cart')) || [];
-}
-
-function saveCart(cart) {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function updateCartCount() {
-    const cart = loadCart();
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.querySelector('.cart-count').textContent = count;
-}
-
-// NOVO: Função para enviar a mensagem do pedido pelo WhatsApp
+// Prepara e envia o pedido para o WhatsApp.
 function sendWhatsAppOrder() {
     const cart = loadCart();
     if (cart.length === 0) {
@@ -130,7 +139,7 @@ function sendWhatsAppOrder() {
         return;
     }
 
-    // Informações para o pedido
+    // Monta a mensagem do pedido, incluindo o total e os detalhes.
     let message = "Olá, gostaria de fazer um pedido!\n\n*Detalhes do pedido:*\n\n";
     let total = 0;
 
@@ -147,13 +156,13 @@ function sendWhatsAppOrder() {
     message += `\n*Total: R$ ${total.toFixed(2).replace('.', ',')}*\n\n`;
     message += "Aguardando confirmação. Obrigado!";
 
-    // Codifica a mensagem para ser usada na URL
+    // Converte a mensagem para um formato seguro para a URL.
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = "5591984579361"; // Coloque seu número de telefone aqui (com código do país e DDD)
+    const phoneNumber = "5591984579361"; // **Lembre-se de colocar seu número de telefone aqui!**
 
-    // Cria o link do WhatsApp
+    // Cria o link do WhatsApp com a mensagem pré-preenchida.
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    // Abre o link em uma nova aba
+    // Abre o link em uma nova aba do navegador.
     window.open(whatsappUrl, '_blank');
 }

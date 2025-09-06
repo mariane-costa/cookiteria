@@ -26,11 +26,17 @@
     box-sizing: border-box;
 }
 
+/* --- Estilo do Corpo da Página (com fundo) --- */
 body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    background-color: var(--cor-bege);
     color: var(--cor-neutra-escura);
+    margin: 0;
+    background-image: url('imagens/plano_de_fundo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
 }
 
 .container {
@@ -56,10 +62,14 @@ header {
     flex-wrap: wrap;
 }
 
-header h1 {
+/* Estilos para a marca do cabeçalho */
+header h1,
+.header .logo {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 1.5rem; /* Ajustado para ser igual em ambos os headers */
     font-weight: 700;
+    color: var(--cor-branca);
+    text-decoration: none;
 }
 
 .navbar-brand a {
@@ -76,6 +86,9 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
 }
 
 nav ul li a {
@@ -86,7 +99,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: var(--cor-azul);
+    color: var(--cor-lavanda-hover);
 }
 
 .cart-icon {
@@ -125,8 +138,7 @@ nav ul li a:hover {
 /* --- Cards de Produtos --- */
 .produtos {
     padding: 60px 0;
-    background: linear-gradient(rgba(245, 245, 220, 0.8), rgba(245, 245, 220, 0.8)),
-                url('imagens/plano_de_fundo.png') no-repeat center center/cover fixed;
+    background-color: rgba(245, 245, 220, 0.8); /* Fundo com opacidade */
 }
 
 .produtos h2 {
@@ -151,7 +163,7 @@ nav ul li a:hover {
     width: 300px;
     transition: transform 0.3s ease;
     text-decoration: none;
-    color: var(--cor-neutra-escura); /* Adicionado para garantir que o texto dentro do link tenha a cor correta */
+    color: var(--cor-neutra-escura); 
 }
 
 .card:hover {
@@ -180,9 +192,6 @@ nav ul li a:hover {
 .sobre, .contato {
     padding: 60px 0;
     text-align: center;
-}
-
-.sobre {
     background-color: var(--cor-bege);
 }
 
@@ -203,7 +212,7 @@ nav ul li a:hover {
 
 /* --- Rodapé --- */
 footer {
-    background-color: var(--cor-neutra-escura);
+    background-color: rgba(51, 51, 51, 0.8); /* Cor neutra escura com opacidade */
     color: var(--cor-branca);
     text-align: center;
     padding: 20px 0;
@@ -214,7 +223,7 @@ footer {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #25D366; 
+    background-color: rgba(37, 211, 102, 0.8); /* Cor verde do WhatsApp com opacidade */
     color: var(--cor-branca);
     width: 60px;
     height: 60px;
@@ -235,7 +244,7 @@ footer {
 /* --- Estilos para a Página de Produto--- */
 .product-page {
     padding: 60px 0;
-    background-color: var(--cor-bege);
+    background-color: rgba(245, 245, 220, 0.8);
 }
 
 .product-container {
@@ -428,6 +437,7 @@ footer {
 .cart-page {
     padding: 60px 0;
     min-height: 50vh;
+    background-color: rgba(245, 245, 220, 0.9);
 }
 
 #cart-items {
@@ -511,6 +521,7 @@ footer {
 #checkout-button {
     width: 100%;
     max-width: 300px;
+    text-align: center;
 }
 
 /* Responsividade para a página do carrinho */
@@ -618,4 +629,33 @@ footer {
 
 .btn-primary:hover {
     background-color: var(--cor-azul-claro-hover);
+}
+
+/* --- Estilos para a página de Agendamento --- */
+.agendamento-page {
+    padding: 60px 0;
+    background-color: rgba(245, 245, 220, 0.9);
+}
+
+/* Estilo para a caixa de seleção de local de entrega */
+#delivery-location {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border: 2px solid var(--cor-lavanda-claro);
+    border-radius: 20px; /* Deixa os cantos arredondados, dando um visual mais suave */
+    background-color: var(--cor-branca);
+    color: var(--cor-neutra-escura);
+    appearance: none; /* Tenta remover a aparência nativa do navegador (pode variar) */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar */
+    width: 100%;
+    max-width: 400px;
+}
+
+#delivery-location:focus {
+    border-color: var(--cor-lavanda-escuro); /* Cor da borda quando selecionado */
+    outline: none;
 }

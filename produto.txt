@@ -1,0 +1,77 @@
+Documentação do Código HTML: produto.html
+
+Este arquivo produto.html é o template dinâmico do seu site. Ele serve como a estrutura base para exibir os detalhes de qualquer produto, e o conteúdo real (nome, preço, imagens) é inserido por um script JavaScript.
+
+Seção <head>: Configurações da Página
+
+Esta seção define as informações básicas e os recursos que a página precisa carregar.
+
+    <meta charset="UTF-8">: Garante que os caracteres especiais e acentos da língua portuguesa sejam exibidos corretamente.
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">: Essencial para a responsividade. Permite que o site se adapte e seja visualizado corretamente em telas de celulares e tablets.
+
+    <title>Detalhes do Produto - Cookiteria Afetiva</title>: O título que aparece na aba do navegador. Ele é genérico, pois será atualizado pelo JavaScript para incluir o nome específico do produto.
+
+    <link rel="stylesheet" href="style.css">: Conecta a página ao seu arquivo de estilos, definindo cores, fontes e o layout.
+
+    <link rel="stylesheet" href=".../font-awesome/...">: Importa a biblioteca de ícones Font Awesome, que é usada para exibir ícones como o de carrinho de compras (<i class="fas fa-shopping-cart"></i>) e a seta de voltar (<i class="fas fa-chevron-left"></i>).
+
+    <link href=".../fonts.googleapis.com/...">: Conecta a página às fontes personalizadas que você escolheu no Google Fonts.
+
+Seção <body>: Conteúdo Visível
+
+Esta seção contém todos os elementos visuais da página, organizados de forma hierárquica.
+
+<header>: O Cabeçalho
+
+O cabeçalho é a barra de navegação superior, idêntica em todas as páginas do site para garantir uma experiência consistente.
+
+    <h1>Cookiteria Afetiva</h1>: O título principal da marca. É um link (<a>) que leva de volta para a página inicial (index.html).
+
+    <nav>: Contém a lista de navegação. Cada item (<li>) é um link para uma seção específica da página inicial ou para a página do carrinho.
+
+    <a href="carrinho.html" class="cart-icon">...: O ícone do carrinho de compras. O <span class="cart-count">0</span> é o contador de itens, cujo valor é atualizado automaticamente pelo JavaScript no arquivo shared.js.
+
+<main class="product-page">: O Conteúdo Principal do Produto
+
+Esta é a área central da página, onde os detalhes do produto são exibidos. O código dentro dela funciona como um template vazio que é preenchido pelo product_script.js.
+
+    <div class="container product-container">: O principal contêiner flexbox que organiza todos os elementos da página de produto, garantindo um layout consistente em diferentes tamanhos de tela.
+
+    <a href="index.html#produtos" class="back-link">...: Um link que permite ao usuário voltar para a seção de produtos da página inicial.
+
+    <div class="product-images">: Contém a imagem principal e as miniaturas do produto.
+
+        <img id="main-image">: A imagem principal. O atributo src está vazio, pois será preenchido pelo JavaScript com o caminho da imagem correta.
+
+        <div class="thumbnail-images">: O contêiner para as miniaturas de imagem. Elas também são criadas dinamicamente pelo JavaScript.
+
+    <div class="product-details">: Contém as informações textuais do produto e os botões de ação.
+
+        <h2 class="product-name"></h2>: O título do produto, que é preenchido com o nome do cookie pelo JavaScript.
+
+        <p class="product-price"></p>: O preço do produto, que é preenchido dinamicamente.
+
+        <div class="quantity-selector">: Os botões + e - e o contador (<span id="quantity">) para selecionar a quantidade de itens.
+
+        <div class="action-buttons">: Os botões "Adicionar ao Carrinho" e "Comprar". A lógica de clique desses botões é controlada pelo product_script.js.
+
+        <div class="product-description">: Contém o título e o parágrafo vazio (<p></p>) que será preenchido pelo JavaScript com a descrição do produto.
+
+Outros Elementos Flutuantes
+
+    <a href=".../whatsapp..." class="whatsapp-button">: Um botão fixo no canto inferior da tela, que abre o WhatsApp.
+
+    <div class="notification">: Uma pequena caixa de notificação que aparece temporariamente no canto inferior para informar que um item foi adicionado ao carrinho. Ela fica oculta por padrão e é exibida pelo JavaScript.
+
+<script>: A Mágica do JavaScript
+
+Essas linhas no final do body são essenciais para o funcionamento dinâmico da página.
+
+    <script src="shared.js"></script>: Carrega as funções utilitárias que são usadas em múltiplas páginas, como salvar e carregar o carrinho, e atualizar o contador de itens.
+
+    <script src="data.js"></script>: Carrega a lista de produtos. Esta é a fonte de dados que o script de produto usa para preencher o template.
+
+    <script src="product_script.js"></script>: Este é o coração da página de produto. Ele lê o ID do produto da URL, encontra o produto correspondente no arquivo data.js e preenche todos os elementos vazios da página (<h1>, <img>, etc.) com as informações corretas.
+
+Em resumo, este arquivo produto.html é como um formulário em branco. Os scripts no final da página o preenchem com as informações certas, transformando-o em uma página de produto completa e funcional para qualquer um dos seus cookies.

@@ -1,11 +1,30 @@
+// Este array armazena as datas que não estão disponíveis para agendamento.
+// Use o formato 'YYYY-MM-DD' para cada data.
+// Exemplo: '2025-09-20' representa 20 de setembro de 2025.
+const unavailableDates = [
+];
+
+
+// A constante 'whatsappNumber' armazena o número de telefone para o pedido.
+// Armazenar em uma variável facilita a atualização futura, evitando a necessidade de procurar o número em outros arquivos.
 const whatsappNumber = "5591984579361";
+
+// O array 'products' é o nosso "banco de dados" de produtos.
+// Cada objeto dentro do array representa um único item da loja, com todas as suas informações.
 const products = [
     {
+        // 'id': Identificador único do produto. Deve ser uma string sem espaços. É usado na URL e para encontrar o produto no código.
         id: 'amendoas',
+        // 'name': O nome completo do produto que será exibido na página.
         name: 'Cookie de Amêndoas',
+        // 'price': O preço do produto, incluindo o símbolo de moeda.
         price: 'R$ 15,00',
+        // 'description': Uma breve descrição para convencer o cliente a comprar!
         description: 'Um cookie levemente crocante com amêndoas laminadas, perfeito para acompanhar um café.',
+        // 'mainImage': O caminho para a imagem principal do produto.
         mainImage: 'imagens/amendoas.jpg',
+        // 'thumbnailImages': Um array de caminhos para as miniaturas de fotos do produto.
+        // O cliente poderá clicar nelas para ver a imagem maior.
         thumbnailImages: [
             'imagens/amendoas_mini01.jpg',
             'imagens/amendoas_mini02.jpg',
@@ -62,6 +81,3 @@ const products = [
     }
     // Adicione os outros produtos aqui seguindo a mesma estrutura
 ];
-
-
-    

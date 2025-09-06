@@ -1,0 +1,183 @@
+/*
+ * Arquivo de estilos para a página de Agendamento.
+ * Contém estilos específicos para o calendário e o formulário.
+ */
+
+/* --- Estilos para a Página de Agendamento --- */
+.scheduling-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 0;
+}
+
+/* --- Calendário --- */
+.calendar-container {
+    background-color: var(--cor-branca);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--cor-lavanda-escuro);
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--cor-cinza-media);
+    transition: color 0.3s ease;
+}
+
+.calendar-header button:hover {
+    color: var(--cor-lavanda-hover);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+/* --- Dias do Calendário --- */
+.day-header {
+    text-align: center;
+    font-weight: bold;
+    color: var(--cor-neutra-escura);
+}
+
+.calendar-cell {
+    text-align: center;
+    padding: 10px 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.calendar-cell.empty {
+    visibility: hidden;
+}
+
+.calendar-cell.available {
+    background-color: var(--cor-cinza-clara);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.calendar-cell.available:hover {
+    background-color: var(--cor-lavanda-secundaria);
+    transform: scale(1.05);
+}
+
+.calendar-cell.unavailable {
+    background-color: #f8d7da;
+    color: var(--cor-neutra-escura);
+    cursor: not-allowed;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.calendar-cell.selected {
+    background-color: var(--cor-lavanda);
+    color: var(--cor-branca);
+    transform: scale(1.05);
+}
+
+/* --- Formulário e Detalhes --- */
+.scheduling-details {
+    flex: 1;
+    max-width: 500px;
+}
+
+.message-box {
+    background-color: var(--cor-lavanda-secundaria);
+    padding: 20px;
+    border-left: 5px solid var(--cor-lavanda);
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.deposit-message {
+    color: var(--cor-neutra-escura);
+    line-height: 1.5;
+}
+
+.scheduling-details h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--cor-lavanda-escuro);
+    margin-bottom: 10px;
+}
+
+#selected-date-display {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+#delivery-location {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--cor-cinza-borda);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#scheduling-form .btn-primary {
+    width: 100%;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .scheduling-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .calendar-container, .scheduling-details {
+        max-width: 100%;
+    }
+}
+
+/* Estilo para a caixa de seleção de local de entrega */
+#delivery-location {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border: 2px solid var(--cor-lavanda-claro);
+    border-radius: 20px; /* Deixa os cantos arredondados, dando um visual mais suave */
+    background-color: var(--cor-branca);
+    color: var(--cor-neutra-escura);
+    appearance: none; /* Tenta remover a aparência nativa do navegador (pode variar) */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar */
+    width: 100%;
+    max-width: 400px;
+}
+
+#delivery-location:focus {
+    border-color: var(--cor-lavanda-escuro); /* Cor da borda quando selecionado */
+    outline: none;
+}
+
+.page-title {
+    text-align: center;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Pedido</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="agendar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="data.js" defer></script>
+    <script src="shared.js" defer></script>
+    <script src="agendar_script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">Cookiteria Afetiva</a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li>
+                        <a href="carrinho.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="agendamento-page">
+        <h2 class="page-title">Agendamento de Pedido</h2>
+
+        <div class="scheduling-section">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prev-month"> &lt; </button>
+                    <h3 id="current-month-year"></h3>
+                    <button id="next-month"> &gt; </button>
+                </div>
+                <div class="calendar-grid" id="calendar-grid"></div>
+            </div>
+
+            <div class="scheduling-details">
+                <div class="message-box">
+                    <p class="deposit-message">
+                        **Importante:** A produção do seu pedido só será iniciada após a confirmação do pagamento de 50% do valor total. Após o envio do seu pedido para meu whatsapp eu lhe responderei para acertarmos os detalhes da entrega e do pagamento.
+                    </p>
+                </div>
+
+                <form id="scheduling-form">
+                    <h3>Data de Entrega Selecionada:</h3>
+                    <p id="selected-date-display">Nenhuma data selecionada.</p>
+
+                    <h3>Local de Entrega:</h3>
+                    <select id="delivery-location" required>
+                        <option value="">Selecione um local</option>
+                        <option value="Retirada em minha casa">Farei retirada: Bairro Guamá, Trav. 25 de junho, 219 A, entre Barão de igarapé Mirí e 3 de outubro</option>
+                        <option value="Shopping Castanheira">Entrega combinada: Shopping Castanheira (Entroncamento)</option>
+                        <option value="Shopping Pátio Belém">Entrega combinada: Shopping Pátio Belém (Batista Campos)</option>
+                        <option value="Shopping Boulevard">Entrega combinada: Shopping Boulevard (Doca)</option>
+                    </select>
+
+                    <button type="submit" class="btn-primary">Finalizar Agendamento</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Cookies Deliciosos. Todos os direitos reservados.</p>
+    </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
