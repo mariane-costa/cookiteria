@@ -1,0 +1,63 @@
+Documentação do carrinho.html
+Este documento descreve a estrutura, o conteúdo e a funcionalidade da página do carrinho de compras. A página é projetada para ser responsiva e interagir com arquivos JavaScript para exibir os itens selecionados.
+
+1. Cabeçalho (<head>)
+Esta seção contém as configurações e links para o estilo e fontes da página.
+
+<meta charset="UTF-8">: Define a codificação de caracteres para UTF-8.
+
+<meta name="viewport" ...>: Habilita a responsividade da página para se adaptar a diferentes tamanhos de tela.
+
+<title>Meu Carrinho - Cookiteria Afetiva</title>: Define o título da aba do navegador.
+
+<link rel="stylesheet" ...>: Links para os arquivos de estilo style.css e bibliotecas externas (Font Awesome e Google Fonts).
+
+2. Corpo da Página (<body>)
+Esta é a parte visível da página, que exibe o conteúdo do carrinho.
+
+<header>: O cabeçalho da página, idêntico ao index.html, contendo a navegação principal e o link para o próprio carrinho.
+
+.navbar-brand: O logo do site, que também é um link para a página inicial.
+
+<nav>: A barra de navegação com links para outras seções do site e para a página do carrinho.
+
+Conteúdo Principal (<main class="cart-page">): A área principal da página, dedicada à exibição do carrinho.
+
+<h2>Meu Carrinho</h2>: O título da seção do carrinho.
+
+<div id="cart-items">: Este é o contêiner central onde os itens do carrinho são adicionados dinamicamente pelo JavaScript. A página começa com esta div vazia e o script a preenche com a lista de produtos.
+
+<div id="cart-summary">: O contêiner para o resumo do pedido. Ele é exibido ou escondido pelo JavaScript dependendo se o carrinho tem itens.
+
+<p id="cart-subtotal">: Exibe o subtotal total do carrinho, que é calculado e atualizado pelo script.
+
+<div class="button-group">: Contém os botões de ação:
+
+Continue Comprando: Um link que leva de volta à página inicial (index.html).
+
+Esvaziar Carrinho: Um botão que, ao ser clicado, limpa todos os itens do carrinho usando o JavaScript.
+
+Continuar para Agendamento: Um link que leva à página de agendamento (agendar.html) para a próxima etapa da compra.
+
+<p id="empty-cart-message">: Uma mensagem que aparece quando o carrinho está vazio. Ela é controlada pela propriedade CSS display:none e só se torna visível quando o JavaScript detecta que não há itens.
+
+Rodapé (<footer>): O rodapé da página, com as informações de direitos autorais, igual ao index.html.
+
+3. Scripts e Recursos Externos
+Estes arquivos são essenciais para o funcionamento da página do carrinho.
+
+<a> para WhatsApp: O botão flutuante para contato direto via WhatsApp.
+
+<script src="shared.js">: Contém funções compartilhadas entre as páginas, como loadCart(), saveCart() e updateCartCount().
+
+<script src="data.js">: O arquivo de dados que armazena as informações dos produtos, permitindo que o script do carrinho acesse os detalhes de cada item.
+
+<script src="cart_script.js">: O script principal desta página. Ele é responsável por:
+
+Carregar os itens do carrinho do localStorage.
+
+Renderizar (desenhar) os itens na página, incluindo a imagem, nome, preço unitário e o subtotal por item.
+
+Adicionar "ouvintes de eventos" aos botões de aumentar, diminuir e remover a quantidade de produtos.
+
+Atualizar o subtotal total e a contagem de itens do carrinho.

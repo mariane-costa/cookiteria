@@ -1,0 +1,58 @@
+Documentação do agendar.html
+Este documento descreve a estrutura e a funcionalidade da página de agendamento de pedidos, onde os clientes podem selecionar uma data para a entrega.
+
+1. Cabeçalho (<head>)
+Esta seção contém os metadados da página, links para arquivos de estilo e as dependências de scripts.
+
+<meta charset="UTF-8">: Define a codificação de caracteres para UTF-8.
+
+<meta name="viewport" ...>: Habilita a responsividade da página.
+
+<title>Agendamento de Pedido</title>: O título da página exibido na aba do navegador.
+
+<link rel="stylesheet" ...>: Links para os arquivos de estilo style.css (estilos globais) e agendar.css (estilos específicos da página de agendamento), além de bibliotecas de fontes como Font Awesome e Google Fonts.
+
+<script src="..." defer>: Importa os arquivos JavaScript necessários para a funcionalidade da página. O atributo defer garante que os scripts só serão executados após o HTML ter sido completamente carregado. Os arquivos são:
+
+data.js: O "banco de dados" de produtos.
+
+shared.js: Funções utilitárias compartilhadas, como as de manipulação do carrinho.
+
+datas_indisponiveis.js: Um arquivo de dados específico que armazena as datas que não estão disponíveis para agendamento.
+
+agendar_script.js: O script principal da página, que controla o calendário, a seleção de datas e o envio do formulário.
+
+2. Corpo da Página (<body>)
+Esta seção contém a estrutura visível da página, incluindo o cabeçalho, o calendário, o formulário e o rodapé.
+
+<header>: O cabeçalho da página, idêntico aos outros arquivos, com o logo e o link para o carrinho.
+
+Conteúdo Principal (<main class="agendamento-page">): A área principal da página, onde o cliente interage com o formulário de agendamento.
+
+<h2>Agendamento de Pedido</h2>: O título da página.
+
+<div class="scheduling-section">: Um contêiner que organiza o calendário e o formulário lado a lado (em telas maiores).
+
+Calendário (<div class="calendar-container">): A interface visual para o cliente selecionar a data de entrega.
+
+prev-month e next-month: Botões de navegação para alternar entre os meses.
+
+current-month-year: Exibe o mês e o ano atuais.
+
+calendar-grid: Onde os dias do calendário são gerados dinamicamente pelo JavaScript.
+
+Detalhes e Formulário (<div class="scheduling-details">): Contém a mensagem de depósito e o formulário de finalização do pedido.
+
+message-box: Exibe uma mensagem importante sobre o pagamento e a confirmação do pedido.
+
+<form id="scheduling-form">: O formulário para o cliente preencher as informações.
+
+selected-date-display: Um parágrafo que mostra a data selecionada pelo cliente, atualizado pelo script.
+
+client-name: Um campo de texto para o nome do cliente.
+
+delivery-location: Um menu suspenso (<select>) com as opções de locais de entrega pré-definidas.
+
+btn-primary: O botão de submissão do formulário, que dispara a função de finalizar o agendamento no JavaScript.
+
+Rodapé (<footer>): O rodapé da página, com as informações de direitos autorais.

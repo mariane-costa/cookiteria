@@ -1,0 +1,76 @@
+Documentação do index.html
+
+Este documento descreve a estrutura e a função de cada seção do arquivo principal do site, index.html.
+
+1. Cabeçalho (<head>)
+Esta seção contém metadados e links para arquivos externos.
+
+<meta charset="UTF-8">: Define a codificação de caracteres para o padrão UTF-8, garantindo que acentuações e caracteres especiais sejam exibidos corretamente.
+
+<meta name="viewport" ...>: Configura a visualização da página para ser responsiva, adaptando-se a diferentes tamanhos de tela, como em dispositivos móveis.
+
+<title>Cookiteria Afetiva</title>: Define o título da página que aparece na aba do navegador.
+
+<link rel="stylesheet" ...>: Links para os arquivos de estilo CSS, incluindo o style.css local e as bibliotecas de fontes externas como Font Awesome e Google Fonts (Montserrat e Playfair Display).
+
+2. Corpo da Página (<body>)
+Esta é a parte visível do site, contendo toda a estrutura e o conteúdo.
+
+<header>: Contém a navegação principal do site, visível no topo da página.
+
+.container: Um contêiner que centraliza o conteúdo do cabeçalho.
+
+.navbar-brand: Contém o logo do site (<h1>Cookiteria Afetiva</h1>), que também funciona como um link para a página inicial.
+
+<nav>: A barra de navegação com os links para as seções da página.
+
+<ul>: Uma lista não ordenada de links (<li>), incluindo:
+
+#produtos: Navega para a seção de produtos.
+
+#sobre: Navega para a seção "Nossa História".
+
+#contato: Navega para a seção de contato.
+
+Um link para o carrinho (carrinho.html) com o ícone de carrinho (<i class="fas fa-shopping-cart">) e um contador de itens (<span class="cart-count">).
+
+Seção de Apresentação (<section class="hero">):
+
+Apresenta uma mensagem de boas-vindas com o título "O sabor de momentos inesquecíveis" e um parágrafo de descrição sobre a marca.
+
+Seção de Produtos (<section id="produtos">):
+
+Onde os produtos serão exibidos.
+
+O <h2> com o título "Nossos Cookies".
+
+A <div> com o ID cards-container é o elemento-chave. Ela está vazia no HTML porque será preenchida dinamicamente pelo JavaScript (product_script.js), que vai inserir os cards de produtos.
+
+Seção Sobre (<section id="sobre">):
+
+Apresenta a história da marca e da fundadora, Mariane Costa.
+
+Seção de Contato (<section id="contato">):
+
+Informa as formas de contato, como WhatsApp e e-mail.
+
+Rodapé (<footer>):
+
+Contém a informação de direitos autorais.
+
+3. Scripts e Recursos Externos
+Estes arquivos adicionam funcionalidades e interatividade ao site.
+
+<a> para WhatsApp: Um botão flutuante com a classe whatsapp-button que permite ao cliente iniciar uma conversa no WhatsApp.
+
+<script src="shared.js">: Contém funções utilitárias que são usadas em várias páginas, como as funções de manipulação do carrinho de compras (salvar, carregar, atualizar o contador).
+
+<script src="data.js">: Este arquivo é o "banco de dados" do seu site. Ele armazena as informações dos produtos (nome, preço, imagem, etc.) em um formato de dados JavaScript.
+
+<script src="product_script.js">: O script principal desta página. Ele é responsável por:
+
+Carregar os dados dos produtos a partir de data.js.
+
+Gerar o HTML para cada produto (os "cards") e inseri-los na div com o ID cards-container.
+
+Adicionar os botões de "adicionar ao carrinho" aos cards e programar sua funcionalidade.

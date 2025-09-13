@@ -72,10 +72,17 @@ header h1,
     text-decoration: none;
 }
 
+.logo {
+    max-height: 50px; /* Define a altura máxima da sua logo */
+    width: auto; /* Garante que a largura se ajuste para não distorcer a imagem */
+}
+
 .navbar-brand a {
-    text-decoration: none;
+    display: flex; /* Transforma o contêiner em um flexbox */
+    align-items: center; /* Alinha os itens (logo e texto) verticalmente ao centro */
+    gap: 10px; /* Adiciona um espaço de 10px entre a logo e o nome */
+    text-decoration: none; /* Remove o sublinhado */
     color: inherit;
-    display: block; 
 }
 
 .navbar-brand a:hover {
@@ -784,3 +791,4 @@ footer {
         right: -8px; /* Move o contador para a direita */
     }
 }
+

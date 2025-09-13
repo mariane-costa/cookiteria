@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sendWhatsAppOrder(cart, selectedDate, selectedLocation, clientName);
     });
 
-    // Função para enviar o pedido via WhatsApp, agora com agendamento
+    // Função para enviar o pedido via WhatsApp, com agendamento
     function sendWhatsAppOrder(cart, date, location, clientName) {
         let message = `Olá, gostaria de fazer um pedido!\n\n*Nome:* ${clientName}\n*Detalhes do pedido:*\n\n`;
         let total = 0;
@@ -144,10 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
         message += `\n*Total: R$ ${total.toFixed(2).replace('.', ',')}*\n\n`;
         message += `*Data de Entrega:* ${date.toLocaleDateString('pt-BR')}\n`;
         message += `*Local de Entrega:* ${location}\n\n`;
-        message += `**Lembrete:** A produção será iniciada após o pagamento de 50% do valor total. Obrigado!`;
+        message += `**Lembrete:** A produção será iniciada após o pagamento de 50% do valor total. Obrigada!`;
 
         const encodedMessage = encodeURIComponent(message);
-        // O número do WhatsApp agora está em data.js, tornando-o mais fácil de gerenciar
+        // O número do WhatsApp agora está no arquivo data.js
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
         window.open(whatsappUrl, '_blank');
