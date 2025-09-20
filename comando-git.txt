@@ -1,5 +1,0 @@
-git add .
-
-git commit -m "mensagem da atualização"
-
-git push origin main
