@@ -5,6 +5,30 @@ const whatsappNumber = "5591984579361";
 // O array 'products' é o nosso "banco de dados" de produtos.
 // Cada objeto dentro do array representa um único item da loja, com todas as suas informações.
 const products = [
+        {
+        id: 'gotas-chocolate',
+        name: 'Cookie de Gotas de Chocolate',
+        price: 'R$ 12,00',
+        description: 'O clássico irresistível com massa de baunilha e generosas gotas de chocolate meio amargo.',
+        mainImage: 'imagens/gotas_de_chocolate.jpg',
+        thumbnailImages: [
+            'imagens/gotas_de_chocolate_mini01.jpg',
+            'imagens/gotas_de_chocolate_mini02.jpg',
+            'imagens/gotas_de_chocolate_mini03.jpg'
+        ]
+    },
+        {
+        id: 'chocolate-branco',
+        name: 'Cookie de Chocolate Branco',
+        price: 'R$ 15,00',
+        description: 'Uma explosão de sabor com chocolate branco, massa crocante por fora e macia por dentro.',
+        mainImage: 'imagens/chocolate_branco.jpg',
+        thumbnailImages: [
+            'imagens/chocolate_branco_mini01.jpg',
+            'imagens/chocolate_branco_mini02.jpg',
+            'imagens/chocolate_branco_mini03.jpg'
+        ]
+    },
     {
         // 'id': Identificador único do produto. Deve ser uma string sem espaços. É usado na URL e para encontrar o produto no código.
         id: 'amendoas',
@@ -37,18 +61,6 @@ const products = [
         ]
     },
     {
-        id: 'gotas-chocolate',
-        name: 'Cookie de Gotas de Chocolate',
-        price: 'R$ 12,00',
-        description: 'O clássico irresistível com massa de baunilha e generosas gotas de chocolate meio amargo.',
-        mainImage: 'imagens/gotas_de_chocolate.jpg',
-        thumbnailImages: [
-            'imagens/gotas_de_chocolate_mini01.jpg',
-            'imagens/gotas_de_chocolate_mini02.jpg',
-            'imagens/gotas_de_chocolate_mini03.jpg'
-        ]
-    },
-    {
         id: 'pistache',
         name: 'Cookie de Pistache',
         price: 'R$ 20,00',
@@ -60,17 +72,5 @@ const products = [
             'imagens/pistache_mini03.jpg'
         ]
     },
-    {
-        id: 'chocolate-branco',
-        name: 'Cookie de Chocolate Branco',
-        price: 'R$ 15,00',
-        description: 'Uma explosão de sabor com chocolate branco, massa crocante por fora e macia por dentro.',
-        mainImage: 'imagens/chocolate_branco.jpg',
-        thumbnailImages: [
-            'imagens/chocolate_branco_mini01.jpg',
-            'imagens/chocolate_branco_mini02.jpg',
-            'imagens/chocolate_branco_mini03.jpg'
-        ]
-    }
     // Adicione os outros produtos aqui seguindo a mesma estrutura
 ];
