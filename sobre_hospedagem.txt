@@ -2,6 +2,6 @@ Projeto postado em:
 
 https://app.netlify.com/projects/cookiteriaafetiva/configuration/general
 
-sobe o link:
+sob o link:
 
 https://cookiteriaafetiva.netlify.app/
